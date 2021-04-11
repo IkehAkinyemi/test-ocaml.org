@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    
+    <link href="forge.html" rel="alternate" hreflang="en"/>
+
+    
+    <title>forge.ocamlcore.org 2008-2020 &#8211; OCaml</title>
+    <link href="../../img/favicon32x32.ico?" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+    
+    <link href="../../css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/bootstrap_mod.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/ocamlorg.css" rel="stylesheet" media="screen"/>
+    <script src="../../js/collapsed-menu.js"></script>
+    
+    
+    <script>
+      if (document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+      document.documentElement.className = 'svg';
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button aria-label="menu" type="button" class="btn btn-navbar" onclick="toggleVisibilityMenu('menu-items')">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../../" class="brand"><img src="../../img/colour-logo-white.svg" class="svg" alt="OCaml"/><img src="../../img/colour-logo-white.png" class="png" alt="OCaml"/></a>
+          <div id="menu-items" class="nav-collapse collapse">
+                        <ul class="nav">
+              <li><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></li>
+              <li><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></li>
+              <li><a href="https://opam.ocaml.org/" title="Documentation for OCaml Packages">Packages</a></li>
+              <li><a href="../../community/" title="To Contribute to OCaml">Community</a></li>
+              <li><a href="../../community/planet/" title="Blogs and News">News</a></li>
+            </ul>
+
+            
+            <a href="https://github.com/ocaml/ocaml.org/tree/master/site/community/history/forge.md" title="Edit this page" class="edit-this-page pull-right"><span>Edit this page</span></a>
+	    <script>
+	      // Preload the hover image
+	      Image1= new Image(33,33);
+	      Image1.src = '/img/edit-hover.svg';
+	      Image2= new Image(33,33);
+	      Image2.src = '/img/edit-hover.png';
+	    </script>
+            
+            <form id="searchform" class="navbar-search pull-right" method="get" action="//www.google.com/search">
+              <input type="hidden" name="as_sitesearch" value="ocaml.org"/>
+              <label for="search" class="visually-hidden">Search: </label>
+              <input id="search" placeholder="Search" class="search-query" name="q" type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    
+    
+<div class="container">
+  <div class="row">
+    
+    
+    
+    
+    <div id="content-primary" class="span12">
+            <div id="tryocaml" class="content" style="display:none;">
+        <div class="container">
+          <div class="row">
+            <div id="lesson-message"></div>
+            <div id="languages" style="display:none;"></div>
+            <div id="menu-lessons" style="display:none">
+              <table class="zebra-striped">
+                <tr><td id="text-x"><code></code></td> <td></td></tr>
+              </table>
+            </div>
+            <div class="span9 ocaml">
+              <div id="toplevel-container">
+                <pre id="output"></pre>
+                <div id="sharp">#</div>
+                <div id="toplevel"></div>
+              </div>
+              <div id="buttons"></div>
+              <div id="graphics-title"></div>
+              <div id="graphics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+<div class="running-header">
+  
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="../../">Home</a><span class="divider"></span></li>
+<li><a href="../../community/">Community</a><span class="divider"></span></li>
+<li><a href="../../community/history/">History</a><span class="divider"></span></li>
+<li class="active">forge.ocamlcore.org 2008-2020</li>
+
+
+    </ol>
+    <ul class="translations">
+      <li class="active">en</li>
+
+    </ul>
+  </div>
+  
+</div>
+
+      <div id="main-contents" class="content">
+        
+
+<h1 id="forge-ocamlcore-org-2008-2020">forge.ocamlcore.org 2008-2020</h1>
+
+<p>The OCaml Forge was setup in 2008 by a few administrators to increase the visibility of OCaml projects and provide them
+with a common infrastructure. At this time, Github was not yet very popular and the other options did not offer the type
+of visibility for OCaml we wanted. When the forge was shutdown, there were 416 users and 300 projects hosted.</p>
+<p><img src="forge-2018.png" alt="Screenshot of the Forge in 2018"/></p>
+<h2 id="Building-the-forge">Building the forge</h2>
+
+<p>The main goal was to provide an infrastructure for the OCaml community:</p>
+<ul><li>Make OCaml enthusiasts more visible</li><li>Allow to gather an important code base</li><li>Centralize contributions to gain more momentum</li><li>Improve the OCaml “marketing” by showing many projects and the available libraries</li></ul>
+
+<p>When the forge was built, the market was different. The main code hosting sites were SourceForge and Google Code. There 
+were other contenders like Savannah and self-hosting possibility with Trac. The team behind the forge decided
+to use FusiongForge, which was an open-source fork of the SourceForge code base. It was a great platform, offering most
+of what was needed.</p>
+<h2 id="Operating-the-forge">Operating the forge</h2>
+
+<p>The forge was offering:</p>
+<ul><li>Mailing list (mailman)</li><li>File upload/download</li><li>Planet style RSS feed (tracking many OCaml blogs)</li><li>Project Sites</li><li>Bug Tracking</li><li>VCS (bzr, mercurial, git, cvs, subversion)</li></ul>
+
+<p>The administrators of the website were:</p>
+<ul><li>Sylvain Le Gall</li><li>Romain Beauxis</li><li>Pietro Abate</li><li>Stéphane Glondu</li><li>Stefano Zacchiroli</li></ul>
+
+<p>The biggest projects, in terms of downloads, in 2018 were:</p>
+<ol><li><a href="https://github.com/ocaml/oasis">OASIS</a></li><li><a href="https://github.com/gildor478/ounit">OUnit</a></li><li><a href="https://github.com/ocaml/Zarith">Zarith</a></li><li><a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse</a></li><li><a href="https://github.com/garrigue/lablgtk">Lablgtk</a></li><li><a href="https://github.com/xavierleroy/cryptokit">Cryptokit</a></li><li><a href="https://github.com/gildor478/ocaml-fileutils">OCaml fileutils</a></li></ol>
+
+<p>The forge has also hosted a lot of other great OCaml projects:</p>
+<ol><li><a href="https://github.com/ocaml-batteries-team/batteries-included">Batteries</a></li><li><a href="https://ygrek.org/p/ocaml-extunix/">ExtUnix</a></li><li><a href="https://github.com/garrigue/labltk">LablTk</a></li><li>calendar</li><li>...</li></ol>
+
+<h2 id="Decision-to-close-the-forge">Decision to close the forge.</h2>
+
+<p>Given the rise of Github and the lack of time to maintain the OCaml Forge, the main administrator decided to deprecate
+the forge in 2017 (<a href="https://forge.ocamlcore.org/deprecation_announcement/">announcement</a>). The amount of time needed
+to maintain the forge was not worth the number of active projects. The forge was under constant attacks (e.g. SSH
+attacks) and was often used as SEO platform (hosting small &quot;link farm&quot; in artifacts).</p>
+<h3 id="Timeline">Timeline</h3>
+
+<ul><li>2008-01-30: team started to work right after year OCaml Meeting 2008</li><li>2008-02-10: document to made clear the distinction between OCamlCore.com (main sponsor) and the forge</li><li>2008-02-19: planet.o.o online</li><li>2008-03-07: forge.o.o enter beta test</li><li>2008-03-20: darcs.o.o and git.o.o (2 VCS popular in 2008)</li><li>2008-04-19: the forge is officially opened</li><li>2008-09-02: homepage for projects (Project Sites, like http://oasis.forge.ocamlcore.org)</li><li>2009-01-31: 114 users, 72 projects</li><li>2010-04-16: 244 users, 146 projects</li><li>2011-04-15: 390 users, 221 projects</li><li>2011-10-20: plans drafted to migrate to forge.ocaml.org (never delivered)</li><li>2014-10-23: the forge has been compromised!</li><li>2016-09-04: significant increase in SSH attacks, more restrictions on SSH put in place</li><li>2016-09-09: planet.o.o is deprecated in favor of ocaml.org</li><li>2016-12-30: official announce of the forge deprecation.</li><li>2020-10-17: 416 users, 300 projects, 1.2k files (tarballs of projects)</li><li>2020-10-17: the final day of the forge, which is now replaced with a static website</li></ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer id="footer" class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></h1>
+    <ul>
+      <li><a href="../../learn/taste.html">Code Examples</a></li>
+      <li><a href="../../learn/tutorials/">Tutorials</a></li>
+      <li><a href="../../learn/books.html">Books</a></li>
+      <li><a href="../../learn/success.html">Success Stories</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></h1>
+    <ul>
+      <li><a href="../../docs/install.html">Install</a></li>
+      <li><a href="http://caml.inria.fr/pub/docs/manual-ocaml/">Manual</a></li>
+      <li><a href="https://opam.ocaml.org/packages/">Packages</a></li>
+      <li><a href="../../releases/index.html">Compiler Releases</a></li>
+      <li><a href="../../docs/logos.html">Logos</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../community/" title="To contribute to OCaml">Community</a></h1>
+    <ul>
+      <li><a href="../../community/mailing_lists.html">Mailing Lists</a></li>
+      <li><a href="../../meetings/">Meetings</a></li>
+      <li><a href="../../community/planet/">News</a></li>
+      <li><a href="../../community/support.html">Support</a></li>
+      <li><a href="http://caml.inria.fr/mantis/my_view_page.php" target="_blank" rel="noopener">Bug Tracker</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../">Website</a></h1>
+    <ul>
+      <li><a href="https://github.com/ocaml/ocaml.org/tree/master/site/community/history/forge.md" target="_blank" rel="noopener">Edit this page</a></li>
+      <li><a href="https://github.com/ocaml/ocaml.org/issues" target="_blank" rel="noopener">Website Issues</a></li>
+      <li><a href="../../about.html">About This Site</a></li>
+    <li><a href="https://github.com/ocaml/ocaml.org/" target="_blank" rel="noopener">Find Us on GitHub</a></li>
+      <li><a href="../../contributors.html">Credits</a></li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </footer>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+     
+
+  </body>
+</html>

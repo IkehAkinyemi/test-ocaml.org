@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    
+    <link href="." rel="alternate" hreflang="en"/>
+
+    
+    <title>2008 &#8211; OCaml</title>
+    <link href="../../../img/favicon32x32.ico?" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+    
+    <link href="../../../css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="../../../css/bootstrap_mod.css" rel="stylesheet" media="screen"/>
+    <link href="../../../css/ocamlorg.css" rel="stylesheet" media="screen"/>
+    <script src="../../../js/collapsed-menu.js"></script>
+    
+    
+    <script>
+      if (document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+      document.documentElement.className = 'svg';
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button aria-label="menu" type="button" class="btn btn-navbar" onclick="toggleVisibilityMenu('menu-items')">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../../../" class="brand"><img src="../../../img/colour-logo-white.svg" class="svg" alt="OCaml"/><img src="../../../img/colour-logo-white.png" class="png" alt="OCaml"/></a>
+          <div id="menu-items" class="nav-collapse collapse">
+                        <ul class="nav">
+              <li><a href="../../../learn/" title="Beginner's guide to OCaml">Learn</a></li>
+              <li><a href="../../../docs/" title="Official Documentation for OCaml">Documentation</a></li>
+              <li><a href="https://opam.ocaml.org/" title="Documentation for OCaml Packages">Packages</a></li>
+              <li><a href="../../../community/" title="To Contribute to OCaml">Community</a></li>
+              <li><a href="../../../community/planet/" title="Blogs and News">News</a></li>
+            </ul>
+
+            
+            <a href="https://github.com/ocaml/ocaml.org/tree/master/site/meetings/ocaml/2008/index.md" title="Edit this page" class="edit-this-page pull-right"><span>Edit this page</span></a>
+	    <script>
+	      // Preload the hover image
+	      Image1= new Image(33,33);
+	      Image1.src = '/img/edit-hover.svg';
+	      Image2= new Image(33,33);
+	      Image2.src = '/img/edit-hover.png';
+	    </script>
+            
+            <form id="searchform" class="navbar-search pull-right" method="get" action="//www.google.com/search">
+              <input type="hidden" name="as_sitesearch" value="ocaml.org"/>
+              <label for="search" class="visually-hidden">Search: </label>
+              <input id="search" placeholder="Search" class="search-query" name="q" type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    
+    
+<div class="container">
+  <div class="row">
+    
+    <div class="span4"></div>
+    <div class="span8">
+      
+<div class="running-header">
+  
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="../../../">Home</a><span class="divider"></span></li>
+<li><a href="../../../meetings/">OCaml Meetings</a><span class="divider"></span></li>
+<li><a href="../../../meetings/ocaml/">User &amp; Developers Meetings</a><span class="divider"></span></li>
+<li class="active">2008</li>
+
+
+    </ol>
+    <ul class="translations">
+      <li class="active">en</li>
+
+    </ul>
+  </div>
+  
+</div>
+
+    </div>
+    <div class="span4">
+      <nav id="nav-secondary">
+        <ul class="nav nav-list">
+          <li class="nav-header"><a href="#">Contents</a></li>
+          <ul><li><a href="#Program">Program</a>
+</li><li><a href="#Talks-Workshop">Talks/Workshop</a>
+<ul><li><a href="#The-core-Caml-system-status-report-and-challenges-by-Xavier-Leroy">The core Caml system: status report and challenges, by Xavier Leroy</a>
+</li><li><a href="#Ocsigen-Exploiting-the-full-power-of-OCaml-in-Web-Programming-by-Vincent-Balat">Ocsigen: Exploiting the full power of OCaml in Web Programming, by Vincent Balat</a>
+</li><li><a href="#GODI-by-Gerd-Stolpmann">GODI, by Gerd Stolpmann</a>
+</li><li><a href="#ocamlbuild-by-Nicolas-Pouillard">ocamlbuild, by Nicolas Pouillard</a>
+</li><li><a href="#OCaml-in-Debian-by-Sylvain-Le-Gall">OCaml in Debian, by Sylvain Le Gall</a>
+</li><li><a href="#OCaml-on-a-JVM-using-OCaml-Java-by-Xavier-Clerc">OCaml on a JVM using OCaml-Java, by Xavier Clerc</a>
+</li></ul>
+</li><li><a href="#Participants">Participants</a>
+</li><li><a href="#Organization-team">Organization team</a>
+</li></ul>
+
+        </ul>
+      </nav>
+    </div>
+    <div id="content-primary" class="span8">
+            <div id="tryocaml" class="content" style="display:none;">
+        <div class="container">
+          <div class="row">
+            <div id="lesson-message"></div>
+            <div id="languages" style="display:none;"></div>
+            <div id="menu-lessons" style="display:none">
+              <table class="zebra-striped">
+                <tr><td id="text-x"><code></code></td> <td></td></tr>
+              </table>
+            </div>
+            <div class="span9 ocaml">
+              <div id="toplevel-container">
+                <pre id="output"></pre>
+                <div id="sharp">#</div>
+                <div id="toplevel"></div>
+              </div>
+              <div id="buttons"></div>
+              <div id="graphics-title"></div>
+              <div id="graphics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-contents" class="content">
+        
+
+<h1 id="OCaml-Users-Meeting-2008">OCaml Users Meeting 2008</h1>
+
+<p>Location: <strong>Paris, France</strong><br/>Date: Saturday 26th January 2008</p>
+<p>This event took place in Paris at ENST (Ecole Nationale Supérieure
+des Télécommunications or Telecom ParisTech).</p>
+<h2 id="Program">Program</h2>
+
+<ul><li>10:00–10:10: Word of welcome by organization team (S. Le Gall)</li><li>10:10–10:30: Introduction by X. Leroy</li><li>10:30–11:00: Ocsigen and Web programming with OCaml by V. Balat</li><li>11:00–11:30: GODI by G. Stolpmann</li><li>11:30–12:00: ocamlbuild by N. Pouillard</li><li>13:30–14:00: OCaml in Debian by S. Le Gall</li><li>14:00–14:30: OCaml on a JVM using OCaml-Java by X. Clerc</li></ul>
+
+<h2 id="Talks-Workshop">Talks/Workshop</h2>
+
+<p><a href="slides/Introduction.odp">Slides of the introduction</a> and <a href="https://www.youtube.com/watch?v=UZyvShyojWo">video</a>.</p>
+<h3 id="The-core-Caml-system-status-report-and-challenges-by-Xavier-Leroy">The core Caml system: status report and challenges, by Xavier Leroy</h3>
+
+<p>Xavier Leroy, senior research scientist at INRIA Paris-Rocquencourt,
+leads the development team for the core Caml system.</p>
+<p>This talk will briefly review ongoing work on the core Caml system and
+discuss some medium to long-term challenges, both technical and
+organizational.</p>
+<p><a href="slides/cug2008.pdf">Slides</a> and <a href="https://www.youtube.com/watch?v=YdAcmMLwd_U">video</a>.</p>
+<h3 id="Ocsigen-Exploiting-the-full-power-of-OCaml-in-Web-Programming-by-Vincent-Balat">Ocsigen: Exploiting the full power of OCaml in Web Programming, by Vincent Balat</h3>
+
+<p>Vincent Balat is &quot;maître de conférences&quot; (lecturer/assistant
+professor) in Computer Science at Paris Diderot university (Paris 7).</p>
+<p>Ocsigen is a research project of the PPS lab (Université Paris
+Diderot) aiming at developing new programming techniques for the
+Web. It concretized through the implementation of a full featured Web
+server in Objective Caml, and a Web programming library called Eliom
+introducing very new concepts for building dynamic Web sites. Ocsigen
+is now very close to version 1. In this talk I will try to give an
+overview of the project and to give an idea about what programming
+with Eliom looks like.</p>
+<p><a href="slides/ocsigen-ocamlmeeting.pdf">Slides</a> | <a href="http://www.pps.jussieu.fr/~balat/ocsigen-ocamlmeeting.tar.gz">Full source code of the example</a> | <a href="http://www.ocsigen.org">Ocsigen</a>
+| <a href="https://www.youtube.com/watch?v=WnGbGq4ETj0">Video</a></p>
+<h3 id="GODI-by-Gerd-Stolpmann">GODI, by Gerd Stolpmann</h3>
+
+<p>Gerd Stolpmann is an OCaml enthusiast since 1997, and works now as
+consultant for various companies.</p>
+<p>This talk gives an overview over the GODI project. The basic
+mechanisms of GODI are explained, especially how to create new
+packages, and what&#39;s generally happening behind the user interface.</p>
+<p><a href="slides/godi-paris2008.odp">Slides</a> | <a href="https://www.youtube.com/watch?v=SiF9CD5CK_k">Video</a></p>
+<h3 id="ocamlbuild-by-Nicolas-Pouillard">ocamlbuild, by Nicolas Pouillard</h3>
+
+<p>Nicolas Pouillard is an OCaml developer, working for Gallium since
+two years, he has made a renovation of Camlp4 and also developed
+ocamlbuild with Berke Durak.</p>
+<p>This talk presents ocamlbuild, a compilation manager that was added to
+the OCaml distribution in the 3.10.0 release. It automates the
+(re)compilation and dependency analysis for OCaml projects. It
+implements the so-called &quot;cut-off&quot; strategy, reducing the amount of
+recompilation performed. For simple projects, ocamlbuild&#39;s built-in
+compilation rules entirely automate the build process: no &quot;Makefile&quot;
+is needed. Variations on the built-in rules can be specified compactly
+through a &quot;tag&quot; mechanism. For more advanced projects, ocamlbuild can
+be extended through plug-ins written in OCaml itself.</p>
+<p><a href="slides/ocamlbuild-ocamlmeeting08.pdf">Slides</a> | <a href="https://www.youtube.com/watch?v=4HPlX6wdmTI">Video</a></p>
+<h3 id="OCaml-in-Debian-by-Sylvain-Le-Gall">OCaml in Debian, by Sylvain Le Gall</h3>
+
+<p>Sylvain Le Gall is a Debian Developer working on OCaml packages since
+2003 and OCaml programmer since 2000.</p>
+<p>This talk is about how OCaml is integrated into the Debian GNU/Linux
+distribution. Through an historical point of view, we will see how the
+packaging has evolve during years. It will also explain the challenge
+that the OCaml packaging team still need to overcome to have a better
+support of this programming language.</p>
+<p><a href="slides/OCamlInDebian.odp">Slides</a> | <a href="https://www.youtube.com/watch?v=-kBprJFFfsc">Video</a></p>
+<h3 id="OCaml-on-a-JVM-using-OCaml-Java-by-Xavier-Clerc">OCaml on a JVM using OCaml-Java, by Xavier Clerc</h3>
+
+<p>Xavier Clerc is an OCaml enthusiast trying to enhance OCaml with Java
+libraries.</p>
+<p>This talk is about the OCaml-Java project and its subprojects. It will
+show how it is possible to run OCaml programs on a Java platform (as
+applications, applets, or servlets) and how Java libraries can then be
+used from OCaml. It will discuss the present state of the project
+(features, compatibility), as well as its future (enhancements,
+roadmap).</p>
+<p><a href="slides/ocamljave-OCamlMeetingParis2008.pdf">Slides</a> | <a href="https://www.youtube.com/watch?v=v0zBMVABYXo">Video</a></p>
+<h2 id="Participants">Participants</h2>
+
+<ul><li>Sylvain Le Gall</li><li>Berke Durak</li><li>Richard W.M. Jones</li><li>Nicolas Pouillard</li><li>Vincent Balat</li><li>Olivier Grisel</li><li>Mehdi Dogguy</li><li>Gerd Stolpmann</li><li>Martin Jambon</li><li>Jaap Boender</li><li>Xavier Clerc</li><li>Stéphane Glondu</li><li>Ralf Treinen</li><li>Gabriel Kerneis</li><li>David Teller</li><li>Pierre Letouzey</li><li>Cecile Stentzel</li><li>Olivier Andrieu</li><li>Pierre Chambart</li><li>Jérémie Dimino</li><li>Keiko Nakata</li><li>Pietro Abate</li><li>Benjamin Canou</li><li>Christophe Troestler</li><li>Philippe Wang</li><li>Jean-Christophe Filliâtre</li><li>Wolfgang Beck</li><li>Luca Saiu</li><li>Raja Boujbel</li><li>Guillaume Bau</li><li>Alain Frisch</li><li>Pierre Magistry</li><li>Tahina Ramananandro</li><li>Romain Bardou</li><li>Arnaud Spiwack</li><li>Vincent Gross</li><li>Virgile Prevosto</li><li>Damien Doligez</li><li>Louis Mandel</li><li>Xavier Leroy</li><li>Gabriel Scherer</li><li>Jean-Vincent Loddo</li><li>Jonathan Derque</li><li>Vivien Ravet</li><li>Zheng Li</li><li>Pierre Clairambault</li><li>Mattias Engdegård</li><li>Mathias Kende</li><li>Johannes Kanig</li><li>Aurelien Gilles</li><li>Alexandre Poirot</li><li>Loïc Boisseau</li><li>Glenn Rolland</li></ul>
+
+<h2 id="Organization-team">Organization team</h2>
+
+<p>Team list:</p>
+<ul><li>Sylvain Le Gall, main contact</li><li>Vincent Balat</li><li>Gabriel Kerneis</li></ul>
+
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+    
+    <footer id="footer" class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../learn/" title="Beginner's guide to OCaml">Learn</a></h1>
+    <ul>
+      <li><a href="../../../learn/taste.html">Code Examples</a></li>
+      <li><a href="../../../learn/tutorials/">Tutorials</a></li>
+      <li><a href="../../../learn/books.html">Books</a></li>
+      <li><a href="../../../learn/success.html">Success Stories</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../docs/" title="Official Documentation for OCaml">Documentation</a></h1>
+    <ul>
+      <li><a href="../../../docs/install.html">Install</a></li>
+      <li><a href="http://caml.inria.fr/pub/docs/manual-ocaml/">Manual</a></li>
+      <li><a href="https://opam.ocaml.org/packages/">Packages</a></li>
+      <li><a href="../../../releases/index.html">Compiler Releases</a></li>
+      <li><a href="../../../docs/logos.html">Logos</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../community/" title="To contribute to OCaml">Community</a></h1>
+    <ul>
+      <li><a href="../../../community/mailing_lists.html">Mailing Lists</a></li>
+      <li><a href="../../../meetings/">Meetings</a></li>
+      <li><a href="../../../community/planet/">News</a></li>
+      <li><a href="../../../community/support.html">Support</a></li>
+      <li><a href="http://caml.inria.fr/mantis/my_view_page.php" target="_blank" rel="noopener">Bug Tracker</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../">Website</a></h1>
+    <ul>
+      <li><a href="https://github.com/ocaml/ocaml.org/tree/master/site/meetings/ocaml/2008/index.md" target="_blank" rel="noopener">Edit this page</a></li>
+      <li><a href="https://github.com/ocaml/ocaml.org/issues" target="_blank" rel="noopener">Website Issues</a></li>
+      <li><a href="../../../about.html">About This Site</a></li>
+    <li><a href="https://github.com/ocaml/ocaml.org/" target="_blank" rel="noopener">Find Us on GitHub</a></li>
+      <li><a href="../../../contributors.html">Credits</a></li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </footer>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+     
+
+  </body>
+</html>

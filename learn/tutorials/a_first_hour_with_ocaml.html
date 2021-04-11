@@ -1,0 +1,897 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    
+    <link href="a_first_hour_with_ocaml.html" rel="alternate" hreflang="en"/>
+
+    
+    <title>A first hour with OCaml &#8211; OCaml</title>
+    <link href="../../img/favicon32x32.ico?" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+    
+    <link href="../../css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/bootstrap_mod.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/ocamlorg.css" rel="stylesheet" media="screen"/>
+    <script src="../../js/collapsed-menu.js"></script>
+    
+    
+    <script>
+      if (document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+      document.documentElement.className = 'svg';
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button aria-label="menu" type="button" class="btn btn-navbar" onclick="toggleVisibilityMenu('menu-items')">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../../" class="brand"><img src="../../img/colour-logo-white.svg" class="svg" alt="OCaml"/><img src="../../img/colour-logo-white.png" class="png" alt="OCaml"/></a>
+          <div id="menu-items" class="nav-collapse collapse">
+                        <ul class="nav">
+              <li class="active"><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></li>
+              <li><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></li>
+              <li><a href="https://opam.ocaml.org/" title="Documentation for OCaml Packages">Packages</a></li>
+              <li><a href="../../community/" title="To Contribute to OCaml">Community</a></li>
+              <li><a href="../../community/planet/" title="Blogs and News">News</a></li>
+            </ul>
+
+            
+            <a href="https://github.com/ocaml/ocaml.org/tree/master/site/learn/tutorials/a_first_hour_with_ocaml.md" title="Edit this page" class="edit-this-page pull-right"><span>Edit this page</span></a>
+	    <script>
+	      // Preload the hover image
+	      Image1= new Image(33,33);
+	      Image1.src = '/img/edit-hover.svg';
+	      Image2= new Image(33,33);
+	      Image2.src = '/img/edit-hover.png';
+	    </script>
+            
+            <form id="searchform" class="navbar-search pull-right" method="get" action="//www.google.com/search">
+              <input type="hidden" name="as_sitesearch" value="ocaml.org"/>
+              <label for="search" class="visually-hidden">Search: </label>
+              <input id="search" placeholder="Search" class="search-query" name="q" type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    
+    
+<div class="container">
+  <div class="row">
+    
+    <div class="span4"></div>
+    <div class="span8">
+      
+<div class="running-header">
+  
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="../../">Home</a><span class="divider"></span></li>
+<li><a href="../../learn/">Learn</a><span class="divider"></span></li>
+<li><a href="../../learn/tutorials/">OCaml Tutorials</a><span class="divider"></span></li>
+<li class="active">A first hour with OCaml</li>
+
+
+    </ol>
+    <ul class="translations">
+      <li class="active">en</li>
+
+    </ul>
+  </div>
+  
+</div>
+
+    </div>
+    <div class="span4">
+      <nav id="nav-secondary">
+        <ul class="nav nav-list">
+          <li class="nav-header"><a href="#">Contents</a></li>
+          <ul><li><a href="#Running-OCaml-programs">Running OCaml programs</a>
+</li><li><a href="#Expressions">Expressions</a>
+</li><li><a href="#Recursive-functions">Recursive functions</a>
+</li><li><a href="#Types">Types</a>
+</li><li><a href="#Pattern-matching">Pattern matching</a>
+</li><li><a href="#Lists">Lists</a>
+</li><li><a href="#Other-built-in-types">Other built-in types</a>
+</li><li><a href="#Our-own-data-types">Our own data types</a>
+</li><li><a href="#Dealing-with-errors">Dealing with errors</a>
+</li><li><a href="#Imperative-OCaml">Imperative OCaml</a>
+</li><li><a href="#The-Standard-Library">The Standard Library</a>
+</li><li><a href="#A-module-from-OPAM">A module from OPAM</a>
+</li><li><a href="#Compiling-OCaml-programs">Compiling OCaml programs</a>
+</li><li><a href="#Where-next">Where next?</a>
+</li></ul>
+
+        </ul>
+      </nav>
+    </div>
+    <div id="content-primary" class="span8">
+            <div id="tryocaml" class="content" style="display:none;">
+        <div class="container">
+          <div class="row">
+            <div id="lesson-message"></div>
+            <div id="languages" style="display:none;"></div>
+            <div id="menu-lessons" style="display:none">
+              <table class="zebra-striped">
+                <tr><td id="text-x"><code></code></td> <td></td></tr>
+              </table>
+            </div>
+            <div class="span9 ocaml">
+              <div id="toplevel-container">
+                <pre id="output"></pre>
+                <div id="sharp">#</div>
+                <div id="toplevel"></div>
+              </div>
+              <div id="buttons"></div>
+              <div id="graphics-title"></div>
+              <div id="graphics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-contents" class="content">
+        
+
+<h1 id="A-First-Hour-with-OCaml">A First Hour with OCaml</h1>
+
+<p>You may follow along with this tutorial with just a basic OCaml installation,
+as described in <a href="up_and_running.html">Up and Running</a>.</p>
+<p>Alternatively, you may follow almost all of it by running OCaml in your browser
+using <a href="http://try.ocamlpro.com">TryOCaml</a>, with no installation required.</p>
+<h2 id="Running-OCaml-programs">Running OCaml programs</h2>
+
+<p>To try small OCaml expressions, you can use an interactive top level, or REPL
+(Read-Eval-Print Loop). The <code>ocaml</code> command provides a basic top level (you
+should install <code>rlwrap</code> through your system package manager and run <code>rlwrap
+ocaml</code> instead to get history navigation.)</p>
+<p>The alternative REPL <a href="https://github.com/ocaml-community/utop">utop</a> may be installed
+through <a href="../../docs/install.html#OPAM">opam</a> or your system package manager. It has
+the same basic interface but is much more convenient to use (history
+navigation, auto-completion, etc).</p>
+<p>Use <code>;;</code> to indicate that you&#39;ve finished entering each expression and prompt
+OCaml to evaluate it. We run OCaml and evaluate a simple expression:</p>
+<pre class="console"><code class="console">        OCaml version 4.12.0
+
+# 50 * 50;;
+- : int = 2500</code></pre>
+
+<p>This is how it looks using <code>utop</code>:</p>
+<pre class="console"><code class="console">───────┬─────────────────────────────────────────────────────────────┬────
+       │ Welcome to utop version 2.7.0 (using OCaml version 4.12.0)! │     
+       └─────────────────────────────────────────────────────────────┘     
+
+Type #utop_help for help about using utop.
+
+─( 10:12:16 )─&lt; command 0 &gt;───────────────────────────────────────────────
+utop # 50 * 50;;
+- : int = 2500</code></pre>
+
+<p>The in-browser <a href="http://try.ocamlpro.com">TryOCaml</a> has a similar interface.</p>
+<p>The examples in this tutorial can be typed in by hand, or copied into <code>ocaml</code>,
+<code>utop</code> or TryOCaml with copy and paste. Alternatively, we may type into a file,
+and load its contents directly with the <code>#use</code> directive:</p>
+<pre class="console"><code class="console">$ ocaml
+        OCaml version 4.12.0
+
+# #use &quot;program.ml&quot;</code></pre>
+
+<p>Note that <code>#use</code> is not part of the OCaml language proper; it is an instruction
+to the OCaml top level only.</p>
+<h2 id="Expressions">Expressions</h2>
+
+<p>Our phrase <code>50 * 50</code> was an expression, which evaluated to <code>2500</code>. OCaml told
+us that the type was <code>int</code>, an integer (every expression in OCaml has a type).
+To avoid repetition, we can give a name to our number:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">x</span> = 50</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val x : int = 50
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">x * x</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 2500
+</span></code></pre>
+
+<p>Note that this is not a variable as in languages like C and Python. Its value
+cannot be changed. We can write it all in one go using <code>let</code> ... <code>in</code> ...:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">x</span> = 50 <span class="governing">in</span> x * x</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 2500
+</span></code></pre>
+
+<p>Of course, we can have multiple names:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">a</span> = 1 <span class="governing">in</span>
+  <span class="governing">let </span><span class="ocaml-variable">b</span> = 2 <span class="governing">in</span>
+    a + b</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 3
+</span></code></pre>
+
+<p>Note that this is still just one expression. We can define a function to do the
+job for any number:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">square</span> <span class="ocaml-variable">x </span>= x * x</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val square : int -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">square 50</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 2500
+</span></code></pre>
+
+<p>This says that <code>square</code> is a function with one argument, namely <code>x</code>, and that
+the result of the function is the result of evaluating the expression <code>x * x</code>
+with the given value associated with <code>x</code>. Here is another function, this time
+using the comparison operator <code>=</code> to test for even-ness:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">square_is_even</span> <span class="ocaml-variable">x </span>=
+    square x mod 2 = 0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val square_is_even : int -&gt; bool = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">square_is_even 50</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool = true
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">square_is_even 3</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool = false
+</span></code></pre>
+
+<p>Notice the type OCaml infers for the function.</p>
+<p>A function may take multiple
+arguments. Unlike in imperative languages, they are written without parentheses
+and commas. We shall explain why later.</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">ordered</span> <span class="ocaml-variable">a b c </span>=
+    a &lt;= b &amp;&amp; b &lt;= c</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val ordered : 'a -&gt; 'a -&gt; 'a -&gt; bool = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">ordered 1 1 2</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool = true
+</span></code></pre>
+
+<p>We can work with floating-point numbers too, but we must write <code>+.</code>, for
+example, instead of just <code>+</code>:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">average</span> <span class="ocaml-variable">a b </span>=
+    (a +. b) /. 2.0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val average : float -&gt; float -&gt; float = &lt;fun&gt;
+</span></code></pre>
+
+<p>This is rather unusual. In other languages (such as C) integers get promoted to
+floating point values in certain circumstances. For example if you write <code>1 +
+2.5</code> then the first argument (which is an integer) is promoted to a floating
+point number, and the result is also a floating point number.</p>
+<p>OCaml never does implicit casts like this. In OCaml, <code>1 + 2.5</code> is a type error.
+The <code>+</code> operator in OCaml requires two integers as arguments, and here we&#39;re
+giving it an integer and a floating point number, so it reports this error:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">1 + <span class="ocaml-error-loc">2.5</span></span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-error">Error: This expression has type float but an expression was expected of type
+         int
+</span></code></pre>
+
+<p>OCaml doesn&#39;t promote integers to floating point numbers automatically so this
+is also an error:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="ocaml-error-loc">1</span> +. 2.5</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-error">Error: This expression has type int but an expression was expected of type
+         float
+  Hint: Did you mean `1.'?
+</span></code></pre>
+
+<p>What if you actually want to add an integer and a floating point number
+together? (Say they are stored as <code>i</code> and <code>f</code>). In OCaml you need to
+explicitly cast:</p>
+<pre><code class="ocaml">float_of_int i +. f</code></pre>
+
+<p>The <code>float_of_int</code> function takes an <code>int</code> and returns a <code>float</code>.</p>
+<p>You might think that these explicit casts are ugly, time-consuming even, but
+there are several arguments in their favour. Firstly, OCaml needs this explicit
+casting to be able to work out types automatically, which is a wonderful
+time-saving feature. Secondly, if you&#39;ve spent time debugging C programs you&#39;ll
+know that (a) implicit casts cause errors which are hard to find, and (b) much
+of the time you&#39;re sitting there trying to work out where the implicit casts
+happen. Making the casts explicit helps you in debugging.  Thirdly, some casts
+are actually expensive operations. We do ourselves no favours by hiding them.</p>
+<h2 id="Recursive-functions">Recursive functions</h2>
+
+<p>A recursive function is one which uses itself in its own definition. An OCaml
+function isn&#39;t recursive unless you explicitly say so by using <code>let rec</code>
+instead of just <code>let</code>. Here&#39;s an example of a recursive function:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">range</span> <span class="ocaml-variable">a b </span>=
+    <span class="keyword">if</span> a &gt; b <span class="keyword">then</span> []
+    <span class="keyword">else</span> a :: range (a + 1) b</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val range : int -&gt; int -&gt; int list = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">digits</span> = range 0 9</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val digits : int list = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9]
+</span></code></pre>
+
+<p>We have used OCaml&#39;s <code>if</code> ... <code>then</code> ... <code>else</code> ... construct to test a
+condition and choose a path of evaluation. Notice that, like everything else in
+OCaml, it is an expression not a statement. The result of evaluating the whole
+expression is either the result of evaluating the <code>then</code> part or the <code>else</code>
+part.</p>
+<p>The only difference between <code>let</code> and <code>let rec</code> is in the scoping of the
+function name. If the above function had been defined with just <code>let</code>, then the
+call to <code>range</code> would have tried to look for an existing (previously defined)
+function called <code>range</code>, not the currently-being-defined function.</p>
+<h2 id="Types">Types</h2><p>The basic types in OCaml are:</p>
+<pre class="text"><code class="text">OCaml type  Range
+
+int         63-bit signed int on 64-bit processors, or 31-bit signed int on
+            32-bit processors
+float       IEEE double-precision floating point, equivalent to C&#39;s double
+bool        A boolean, written either &#39;true&#39; or &#39;false&#39;
+char        An 8-bit character
+string      A string (sequence of 8 bit chars)</code></pre>
+
+<p>OCaml provides a <code>char</code> type which is used for simple 8-bit characters, written
+<code>&#39;x&#39;</code> for example. There are <a href="https://github.com/yoriyuki/Camomile">comprehensive Unicode
+libraries</a> which provide more extensive
+functionality for text management.</p>
+<p>Strings are not just lists of characters. They have their own, more
+efficient internal representation. Strings are immutable.</p>
+<p>When we type our expressions into the OCaml top level, OCaml prints the type:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">1 + 2</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 3
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">1.0 +. 2.0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : float = 3.
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">false</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool = false
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="string">'c'</span></span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : char = 'c'
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="string">&quot;Help me!&quot;</span></span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : string = &quot;Help me!&quot;
+</span></code></pre>
+
+<p>Each expression has one and only one type.</p>
+<p>OCaml works out types automatically so you will rarely need to explicitly write
+down the type of your functions. However, OCaml often prints out what it infers
+are the types of your functions, so you need to know the syntax. For a function
+<code>f</code> which takes arguments <code>arg1</code>, <code>arg2</code>, ... <code>argn</code>, and returns type
+<code>rettype</code>, the compiler will print:</p>
+<pre><code class="ocaml">f : arg1 -&gt; arg2 -&gt; ... -&gt; argn -&gt; rettype</code></pre>
+
+<p>The arrow syntax looks strange now but later you&#39;ll see why it was chosen. Our
+function <code>average</code> which takes two floats and returns a float has type:</p>
+<pre><code class="ocaml">average : float -&gt; float -&gt; float</code></pre>
+
+<p>The OCaml standard <code>int_of_char</code> casting function:</p>
+<pre><code class="ocaml">int_of_char : char -&gt; int</code></pre>
+
+<p>We can now look at some of the properties which distinguish OCaml from other
+languages:</p>
+<ul><li><p>OCaml is a strongly statically typed language. This means each expression has
+ a type, and only one type, and it is determined before the program is run.</p>
+</li><li><p>OCaml uses type inference to work out (infer) the types, so you don&#39;t have
+ to. If you use the OCaml top level, then OCaml will tell you its inferred
+ type for your function.</p>
+</li><li><p>OCaml doesn&#39;t do any implicit conversion of types. If you want a floating
+ point number, you have to write <code>2.0</code> because <code>2</code> is an integer. OCaml does
+ no automatic conversion between int and floats or any other type. As a
+ side-effect of type inference in OCaml, functions (including operators) can&#39;t
+ have overloaded definitions.</p>
+</li></ul>
+
+<h2 id="Pattern-matching">Pattern matching</h2>
+
+<p>Instead of using one or more <code>if</code> ... <code>then</code> ... <code>else</code> ... constructs to make
+choices in OCaml programs, we can use the <code>match</code> keyword to match on multiple
+possible values. Consider the factorial function:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">factorial</span> <span class="ocaml-variable">n </span>=
+    <span class="keyword">if</span> n &lt;= 1 <span class="keyword">then</span> 1 <span class="keyword">else</span> n * factorial (n - 1)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val factorial : int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>We may write it using pattern matching instead:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">factorial</span> <span class="ocaml-variable">n </span>=
+    <span class="keyword">match</span> n <span class="keyword">with</span>
+    | 0 | 1 -&gt; 1
+    | x -&gt; x * factorial (x - 1)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val factorial : int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>Equally, we could use the pattern <code>_</code> which matches anything, and write:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">factorial</span> <span class="ocaml-variable">n </span>=
+    <span class="keyword">match</span> n <span class="keyword">with</span>
+    | 0 | 1 -&gt; 1
+    | _ -&gt; n * factorial (n - 1)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val factorial : int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>In fact, we may simplify further with the <code>function</code> keyword which introduces
+pattern-matching directly:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">factorial</span> = <span class="keyword">function</span>
+    | 0 | 1 -&gt; 1
+    | n -&gt; n * factorial (n - 1)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val factorial : int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>We will use pattern matching more extensively as we introduce more complicated
+data structures.</p>
+<h2 id="Lists">Lists</h2>
+
+<p>Lists are a common compound data type in OCaml. They are ordered collections of
+elements of like type. Here are some lists:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">[]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : 'a list = []
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">[1; 2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [1; 2; 3]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">[false; false; true]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool list = [false; false; true]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">[[1; 2]; [3; 4]; [5; 6]]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list list = [[1; 2]; [3; 4]; [5; 6]]
+</span></code></pre>
+
+<p>Each list can have a head (its first element) and a tail (the list of the rest
+of its elements).  There are two built-in operators on lists. The <code>::</code> or cons
+operator, adds one element to the front of a list. The <code>@</code> or append operator
+combines two lists:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">1 :: [2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [1; 2; 3]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">[1] @ [2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [1; 2; 3]
+</span></code></pre>
+
+<p>We can write functions which operate over lists by pattern matching:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">total</span> <span class="ocaml-variable">l </span>=
+    <span class="keyword">match</span> l <span class="keyword">with</span>
+    | [] -&gt; 0
+    | h :: t -&gt; h + total t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val total : int list -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">total [1; 3; 5; 3; 1]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 13
+</span></code></pre>
+
+<p>You can see how the pattern <code>h :: t</code> is used to deconstruct the list, naming
+its head and tail. If we omit a case, OCaml will notice and warn us:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">le<span class="ocaml-error-loc">t rec</span></span></span><span class="ocaml-error-loc"> </span><span class="ocaml-function"><span class="ocaml-error-loc">total</span></span><span class="ocaml-error-loc"> </span><span class="ocaml-variable"><span class="ocaml-error-loc">l </span></span><span class="ocaml-error-loc">=
+    </span><span class="keyword"><span class="ocaml-error-loc">match</span></span><span class="ocaml-error-loc"></span> l <span class="keyword">with</span>
+    | h :: t -&gt; h + total t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr">Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+[]
+</span>val total : int list -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">total [1; 3; 5; 3; 1]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>Exception: Match_failure (&quot;&quot;, 2, 2).
+</span></code></pre>
+
+<p>We shall talk about the &quot;exception&quot; which was caused by our ignoring the
+warning later. Consider now a function to find the length of a list:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">length</span> <span class="ocaml-variable">l </span>=
+    <span class="keyword">match</span> l <span class="keyword">with</span>
+    | [] -&gt; 0
+    | _ :: t -&gt; 1 + length t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val length : 'a list -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>This function operates not just on lists of integers, but on any kind of list.
+This is indicated by the type, which allows its input to be <code>&#39;a list</code>
+(pronounced alpha list).</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">length [1; 2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 3
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">length [<span class="string">&quot;cow&quot;</span>; <span class="string">&quot;sheep&quot;</span>; <span class="string">&quot;cat&quot;</span>]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 3
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">length [[]]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 1
+</span></code></pre>
+
+<p>Why is this? Because in the pattern <code>_ :: t</code> the head of the list is not
+inspected, so its type cannot be relevant. Such a function is called
+polymorphic. Here is another polymorphic function, our own version of the <code>@</code>
+operator for appending:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">append</span> <span class="ocaml-variable">a b </span>=
+    <span class="keyword">match</span> a <span class="keyword">with</span>
+    | [] -&gt; b
+    | h :: t -&gt; h :: append t b</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val append : 'a list -&gt; 'a list -&gt; 'a list = &lt;fun&gt;
+</span></code></pre>
+
+<p>Can you see how it works? Notice that the memory for the second list is shared,
+but the first list is effectively copied. Such sharing is common when we use
+immutable data types (ones whose values cannot be changed).</p>
+<p>We might wish to apply a function to each element in a list, yielding a new
+one. We shall write a function <code>map</code> which is given another function as its
+argument - such a function is called &quot;higher-order&quot;:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">map</span> <span class="ocaml-variable">f l </span>=
+    <span class="keyword">match</span> l <span class="keyword">with</span>
+    | [] -&gt; []
+    | h :: t -&gt; f h :: map f t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val map : ('a -&gt; 'b) -&gt; 'a list -&gt; 'b list = &lt;fun&gt;
+</span></code></pre>
+
+<p>Notice the type of the function <code>f</code> in parentheses as part of the whole type.
+This <code>map</code> function, given a function of type <code>&#39;a -&gt; &#39;b</code> and a list of <code>&#39;a</code>s,
+will build a list of <code>&#39;b&#39;</code>s. Sometimes <code>&#39;a</code> and <code>&#39;b</code> might be the same type, of
+course. Here are some examples of using <code>map</code>:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">map total [[1; 2]; [3; 4]; [5; 6]]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>Exception: Match_failure (&quot;&quot;, 2, 2).
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">map (<span class="keyword">fun</span> x -&gt; x * 2) [1; 2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [2; 4; 6]
+</span></code></pre>
+
+<p>(The syntax <code>fun</code> ... <code>-&gt;</code> ... is used to build a function without a name - one
+we will only use in one place in the program.)</p>
+<p>We need not give a function all its arguments at once. This is called partial
+application. For example:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">add</span> <span class="ocaml-variable">a b </span>= a + b</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val add : int -&gt; int -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">add</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int -&gt; int -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">f</span> = add 6</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val f : int -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">f 7</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 13
+</span></code></pre>
+
+<p>Look at the types of <code>add</code> and <code>f</code> to see what is going on. We can use partial
+application to add to each item of a list:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">map (add 6) [1; 2; 3]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [7; 8; 9]
+</span></code></pre>
+
+<p>Indeed we can use partial application of our <code>map</code> function to map over lists
+of lists:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">map (map (<span class="keyword">fun</span> x -&gt; x * 2)) [[1; 2]; [3; 4]; [5; 6]]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list list = [[2; 4]; [6; 8]; [10; 12]]
+</span></code></pre>
+
+<h2 id="Other-built-in-types">Other built-in types</h2>
+
+<p>We have seen basic data types like <code>int</code>, and our first compound data type, the
+list. There are two more ways compound data types of interest. First we have
+tuples, which are fixed length collections of elements of any type:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">t</span> = (1, <span class="string">&quot;one&quot;</span>, <span class="string">'1'</span>)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val t : int * string * char = (1, &quot;one&quot;, '1')
+</span></code></pre>
+
+<p>Notice how the type is written. Records are like tuples, but they have named
+elements:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">type</span> <span class="type">person</span> =
+    {first_name : string;
+     surname : string;
+     age : int}</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>type person = { first_name : string; surname : string; age : int; }
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">frank</span> =
+    {first_name = <span class="string">&quot;Frank&quot;</span>;
+     surname = <span class="string">&quot;Smith&quot;</span>;
+     age = 40}</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val frank : person = {first_name = &quot;Frank&quot;; surname = &quot;Smith&quot;; age = 40}
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">s</span> = frank.surname</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val s : string = &quot;Smith&quot;
+</span></code></pre>
+
+<p>Pattern-matching works on tuples and records too, of course.</p>
+<h2 id="Our-own-data-types">Our own data types</h2>
+
+<p>We can define new data types in OCaml with the <code>type</code> keyword:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">type</span> <span class="type">colour</span> = Red | Blue | Green | Yellow</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>type colour = Red | Blue | Green | Yellow
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">l</span> = [Red; Blue; Red]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val l : colour list = [Red; Blue; Red]
+</span></code></pre>
+
+<p>Each &quot;type constructor&quot;, which must begin with a capital letter, can optionally
+carry data along with it:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">type</span> <span class="type">colour</span> =
+    | Red
+    | Blue
+    | Green
+    | Yellow
+    | RGB <span class="keyword">of</span> int * int * int</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>type colour = Red | Blue | Green | Yellow | RGB of int * int * int
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">l</span> = [Red; Blue; RGB (30, 255, 154)]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val l : colour list = [Red; Blue; RGB (30, 255, 154)]
+</span></code></pre>
+
+<p>Data types may be polymorphic and recursive too. Here is an OCaml data type for
+a binary tree carrying any kind of data:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">type</span> <span class="type">'a tree</span> =
+    | Lf
+    | Br <span class="keyword">of</span> 'a tree * 'a * 'a tree</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>type 'a tree = Lf | Br of 'a tree * 'a * 'a tree
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">t</span> = Br (Br (Lf, 1, Lf), 2, Br (Br (Lf, 3, Lf), 4, Lf))</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val t : int tree = Br (Br (Lf, 1, Lf), 2, Br (Br (Lf, 3, Lf), 4, Lf))
+</span></code></pre>
+
+<p>A <code>Lf</code> leaf holds no information, just like an empty list. A <code>Br</code> branch holds
+a left tree, a value of type <code>&#39;a</code> and a right tree. Now we can write recursive
+and polymorphic functions over these trees, by pattern matching on our new
+constructors:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">total</span> <span class="ocaml-variable">t </span>=
+    <span class="keyword">match</span> t <span class="keyword">with</span>
+    | Lf -&gt; 0
+    | Br (l, x, r) -&gt; total l + x + total r</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val total : int tree -&gt; int = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">flip</span> <span class="ocaml-variable">t </span>=
+    <span class="keyword">match</span> t <span class="keyword">with</span>
+    | Lf -&gt; Lf
+    | Br (l, x, r) -&gt; Br (flip r, x, flip l)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val flip : 'a tree -&gt; 'a tree = &lt;fun&gt;
+</span></code></pre>
+
+<p>Let&#39;s try our new functions out:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">all</span> = total t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val all : int = 10
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">flipped</span> = flip t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val flipped : int tree = Br (Br (Lf, 4, Br (Lf, 3, Lf)), 2, Br (Lf, 1, Lf))
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">t = flip flipped</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : bool = true
+</span></code></pre>
+
+<p>Notice that we do not need to explicitly free memory for such data structures
+when we no longer need it: OCaml is a garbage-collected language, and will free
+memory for data structures when they are no longer needed. In our example, once
+the boolean test <code>t = flip flipped</code> has been evaluated, the data structure
+<code>flip flipped</code> is not longer reachable by the rest of the program, and its
+memory may be reclaimed by the garbage collector.</p>
+<h2 id="Dealing-with-errors">Dealing with errors</h2>
+
+<p>OCaml deals with exceptional situations in two ways. One is to use <em>exceptions</em>,
+which may be defined in roughly the same way as types:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">exception E</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>exception E
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">exception E2 <span class="keyword">of</span> string</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>exception E2 of string
+</span></code></pre>
+
+<p>An exception is raised like this:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">f</span> <span class="ocaml-variable">a b </span>=
+    <span class="keyword">if</span> b = 0 <span class="keyword">then</span> <span class="keyword">raise</span> (E2 <span class="string">&quot;division by zero&quot;</span>) <span class="keyword">else</span> a / b</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val f : int -&gt; int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>An exception may be handled with pattern matching:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="keyword">try</span> f 10 0 <span class="keyword">with</span> E2 _ -&gt; 0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 0
+</span></code></pre>
+
+<p>When an exception is not handled, it is printed at the top level:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">f 10 0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>Exception: E2 &quot;division by zero&quot;.
+</span></code></pre>
+
+<p>The other way to deal with exceptional situations in OCaml is by returning a
+value of a type which can represent either the correct result or an error, for
+example the built-in polymorphic <code>option</code> type, which is defined as:</p>
+<pre><code class="ocaml"><span class="governing">type</span> <span class="type">'a option</span> = None | Some <span class="keyword">of</span> 'a</code></pre>
+
+<p>So we may write:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">f</span> <span class="ocaml-variable">a b </span>=
+    <span class="keyword">if</span> b = 0 <span class="keyword">then</span> None <span class="keyword">else</span> Some (a / b)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val f : int -&gt; int -&gt; int option = &lt;fun&gt;
+</span></code></pre>
+
+<p>We can use exception handling to build an option-style function from one which
+raises an exception, the built-in <code>List.find</code> function (which finds the first
+element matching a given boolean test):</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">list_find_opt</span> <span class="ocaml-variable">p l </span>=
+    <span class="keyword">try</span> Some (<span class="ocaml-module">List</span>.find p l) <span class="keyword">with</span>
+      Not_found -&gt; None</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val list_find_opt : ('a -&gt; bool) -&gt; 'a list -&gt; 'a option = &lt;fun&gt;
+</span></code></pre>
+
+<p>As an alternative, we can use an extended form of our usual <code>match</code> expression,
+to match both values and catch exceptions:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">list_find_opt</span> <span class="ocaml-variable">p l </span>=
+    <span class="keyword">match</span> <span class="ocaml-module">List</span>.find p l <span class="keyword">with</span>
+    | v -&gt; Some v
+    | exception Not_found -&gt; None</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val list_find_opt : ('a -&gt; bool) -&gt; 'a list -&gt; 'a option = &lt;fun&gt;
+</span></code></pre>
+
+<h2 id="Imperative-OCaml">Imperative OCaml</h2>
+
+<p>OCaml is not just a functional language: it supports imperative programming
+too. OCaml programmers tend to use imperative features sparingly, but almost
+all OCaml programmers use them sometimes. What happens if you want a variable
+that you can assign to and change throughout your program? You need to use a
+<em>reference</em>.</p>
+<p>Here&#39;s how we create a reference to an integer in OCaml:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">r</span> = <span class="keyword">ref</span> 0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val r : int ref = {contents = 0}
+</span></code></pre>
+
+<p>This reference is currently storing the integer zero. Let&#39;s put something
+else into it (assignment):</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">r := 100</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : unit = ()
+</span></code></pre>
+
+<p>And let&#39;s find out what the reference contains now:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">!r</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 100
+</span></code></pre>
+
+<p>So the <code>:=</code> operator is used to assign to references, and the <code>!</code> operator
+dereferences to get the contents.</p>
+<p>References have their place, but you may find that you don&#39;t use them very
+often. Much more often you&#39;ll be using <code>let</code> ... <code>=</code> ... <code>in</code> ... to name local
+expressions in your function definitions.</p>
+<p>We can combine multiple imperative operations with <code>;</code>. For example, here is a
+function to swap the contents of two references of like type:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">swap</span> <span class="ocaml-variable">a b </span>=
+    <span class="governing">let </span><span class="ocaml-variable">t</span> = !a <span class="governing">in</span>
+      a := !b;
+      b := t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val swap : 'a ref -&gt; 'a ref -&gt; unit = &lt;fun&gt;
+</span></code></pre>
+
+<p>Notice the function return type is <code>unit</code>. There is exactly one thing of type
+unit, and it is written <code>()</code>. We use unit to call a function which needs no
+other argument, and is only used for its imperative side effect. For example:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">print_number</span> <span class="ocaml-variable">n </span>=
+    print_string (string_of_int n);
+    print_newline ()</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val print_number : int -&gt; unit = &lt;fun&gt;
+</span></code></pre>
+
+<p>We can look at the type of the built-in function <code>print_newline</code> by typing its
+name without applying the unit argument:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input">print_newline</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : unit -&gt; unit = &lt;fun&gt;
+</span></code></pre>
+
+<p>The usual imperative looping constructs are available. Here is a <code>for</code> loop:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">table</span> <span class="ocaml-variable">n </span>=
+    <span class="keyword">for</span> row = 1 <span class="keyword">to</span> n <span class="keyword">do</span>
+      <span class="keyword">for</span> column = 1 <span class="keyword">to</span> n <span class="keyword">do</span>
+        print_string (string_of_int (row * column));
+        print_string <span class="string">&quot; &quot;</span>
+      <span class="keyword">done</span>;
+      print_newline ()
+    <span class="keyword">done</span></span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val table : int -&gt; unit = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> () = table 10</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout">1 2 3 4 5 6 7 8 9 10 
+2 4 6 8 10 12 14 16 18 20 
+3 6 9 12 15 18 21 24 27 30 
+4 8 12 16 20 24 28 32 36 40 
+5 10 15 20 25 30 35 40 45 50 
+6 12 18 24 30 36 42 48 54 60 
+7 14 21 28 35 42 49 56 63 70 
+8 16 24 32 40 48 56 64 72 80 
+9 18 27 36 45 54 63 72 81 90 
+10 20 30 40 50 60 70 80 90 100 
+</span><span class="ocaml-stderr"></span></span></code></pre>
+
+<p>Here is a <code>while</code> loop, used to write a function to calculate the power of
+two larger or equal to a given number:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">smallest_power_of_two</span> <span class="ocaml-variable">x </span>=
+    <span class="governing">let </span><span class="ocaml-variable">t</span> = <span class="keyword">ref</span> 1 <span class="governing">in</span>
+      <span class="keyword">while</span> !t &lt; x <span class="keyword">do</span>
+        t := !t * 2
+      <span class="keyword">done</span>;
+      !t</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val smallest_power_of_two : int -&gt; int = &lt;fun&gt;
+</span></code></pre>
+
+<p>In addition to references, the imperative part of OCaml has arrays of items of
+like type, whose elements can be accessed or updated in constant time:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let </span><span class="ocaml-variable">arr</span> = [|1; 2; 3|]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val arr : int array = [|1; 2; 3|]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">arr.(0)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int = 1
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">arr.(0) &lt;- 0</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : unit = ()
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input">arr</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int array = [|0; 2; 3|]
+</span></code></pre>
+
+<p>Records may have mutable fields too, which must be marked in the type:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">type</span> <span class="type">person</span> =
+    {first_name : string;
+     surname : string;
+     <span class="keyword">mutable</span> age : int}</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>type person = { first_name : string; surname : string; mutable age : int; }
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">birthday</span> <span class="ocaml-variable">p </span>=
+    p.age &lt;- p.age + 1</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val birthday : person -&gt; unit = &lt;fun&gt;
+</span></code></pre>
+
+<h2 id="The-Standard-Library">The Standard Library</h2>
+
+<p>OCaml comes with a library of useful modules which are available anywhere OCaml
+is. For example there are standard libraries for functional data structures
+(such as maps and sets) and imperative data structures (such as hash tables),
+and for interacting with the operating system. We use them by writing the module, followed by a
+full stop, followed by the name of the function. Here are some functions from
+the <code>List</code> module:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="ocaml-module">List</span>.concat [[1; 2; 3]; [4; 5; 6]; [7; 8; 9]]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [1; 2; 3; 4; 5; 6; 7; 8; 9]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="ocaml-module">List</span>.filter (( &lt; ) 10) [1; 4; 20; 10; 9; 2]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [20]
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="ocaml-module">List</span>.sort compare [1; 6; 2; 2; 3; 56; 3; 2]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>- : int list = [1; 2; 2; 2; 3; 3; 6; 56]
+</span></code></pre>
+
+<p>The <code>Printf</code> module provides type-checked printing facilities, so we know at
+compile-time that the printing will work:</p>
+<pre><code class="ocamltop"><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="governing">let</span> <span class="ocaml-function">print_length</span> <span class="ocaml-variable">s </span>=
+    <span class="ocaml-module">Printf</span>.printf <span class="string">&quot;%s has %i characters\n&quot;</span> s (<span class="ocaml-module">String</span>.length s)</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout"></span><span class="ocaml-stderr"></span>val print_length : string -&gt; unit = &lt;fun&gt;
+</span><span class="ocaml-prompt"># </span><span class="ocaml-input"><span class="ocaml-module">List</span>.iter print_length [<span class="string">&quot;one&quot;</span>; <span class="string">&quot;two&quot;</span>; <span class="string">&quot;three&quot;</span>]</span><span class="ocaml-prompt">;;</span><br/><span class="ocaml-output"><span class="ocaml-stdout">one has 3 characters
+two has 3 characters
+three has 5 characters
+</span><span class="ocaml-stderr"></span>- : unit = ()
+</span></code></pre>
+
+<p>You can find the full list of standard library modules in the
+<a href="../../releases/latest/manual.html">manual</a>.</p>
+<h2 id="A-module-from-OPAM">A module from OPAM</h2>
+
+<p>Apart from the standard library, a much wider range of modules are available
+through the OCaml Package Manager, opam. You must have OCaml on your computer
+to follow the tutorial from now on, not just TryOCaml.</p>
+<p>For these examples we&#39;re going to use module called <code>Graphics</code> which can be
+installed with <code>opam install graphics</code> and the <code>ocamlfind</code> program installed
+with <code>opam install ocamlfind</code>. The <code>Graphics</code> module is a very simple
+cross-platform Graphics system which was once part of OCaml itself. Now it&#39;s
+available separately through OPAM.</p>
+<p>If we want to use the functions in <code>Graphics</code> there are two ways we can
+do it. Either at the start of our program we have the <code>open Graphics</code>
+declaration. Or we prefix all calls to the functions like this:
+<code>Graphics.open_graph</code>.</p>
+<p>To use <code>Graphics</code> in the top level, you must first load the library with</p>
+<pre><code class="ocaml"># #use <span class="string">&quot;topfind&quot;</span><span class="ocaml-prompt">;;</span><br/>- : unit = ()
+Findlib has been successfully loaded. Additional directives:
+...
+  #require <span class="string">&quot;package&quot;</span>;;      <span class="keyword">to</span> load a package
+...
+
+- : unit = ()
+# #require <span class="string">&quot;graphics&quot;</span><span class="ocaml-prompt">;;</span><br/>/Users/me/.opam/4.12.0/lib/graphics: added <span class="keyword">to</span> search path
+/Users/me/.opam/4.12.0/lib/graphics/graphics.cma: loaded</code></pre>
+
+<p>A couple of examples should make this clear. (The two examples draw different
+things - try them out). Note the first example uses <code>open</code> to open the Graphics
+module then calls <code>open_graph</code> and the second one uses <code>Graphics.open_graph</code>
+directly.</p>
+<pre><code class="ocaml"><span class="governing">open</span> <span class="ocaml-module">Graphics</span><span class="ocaml-prompt">;;</span><br/>
+open_graph <span class="string">&quot; 640x480&quot;</span><span class="ocaml-prompt">;;</span><br/>
+<span class="keyword">for</span> i = 12 <span class="keyword">downto</span> 1 <span class="keyword">do</span>
+  <span class="governing">let </span><span class="ocaml-variable">radius</span> = i * 20 <span class="governing">in</span>
+    set_color (<span class="keyword">if</span> i mod 2 = 0 <span class="keyword">then</span> red <span class="keyword">else</span> yellow);
+    fill_circle 320 240 radius
+<span class="keyword">done</span><span class="ocaml-prompt">;;</span><br/>
+read_line ();;</code></pre>
+
+<pre><code class="ocaml"><span class="ocaml-module">Random</span>.self_init ()<span class="ocaml-prompt">;;</span><br/>
+<span class="ocaml-module">Graphics</span>.open_graph <span class="string">&quot; 640x480&quot;</span><span class="ocaml-prompt">;;</span><br/>
+<span class="governing"><span class="governing">let rec</span></span> <span class="ocaml-function">iterate</span> <span class="ocaml-variable">r x_init i </span>=
+  <span class="keyword">if</span> i = 1 <span class="keyword">then</span> x_init <span class="keyword">else</span>
+    <span class="governing">let </span><span class="ocaml-variable">x</span> = iterate r x_init (i - 1) <span class="governing">in</span>
+      r *. x *. (1.0 -. x)<span class="ocaml-prompt">;;</span><br/>
+<span class="keyword">for</span> x = 0 <span class="keyword">to</span> 639 <span class="keyword">do</span>
+  <span class="governing">let </span><span class="ocaml-variable">r</span> = 4.0 *. (float_of_int x) /. 640.0 <span class="governing">in</span>
+  <span class="keyword">for</span> i = 0 <span class="keyword">to</span> 39 <span class="keyword">do</span>
+    <span class="governing">let </span><span class="ocaml-variable">x_init</span> = <span class="ocaml-module">Random</span>.float 1.0 <span class="governing">in</span>
+    <span class="governing">let </span><span class="ocaml-variable">x_final</span> = iterate r x_init 500 <span class="governing">in</span>
+    <span class="governing">let </span><span class="ocaml-variable">y</span> = int_of_float (x_final *. 480.) <span class="governing">in</span>
+      <span class="ocaml-module">Graphics</span>.plot x y
+  <span class="keyword">done</span>
+<span class="keyword">done</span><span class="ocaml-prompt">;;</span><br/>
+read_line ();;</code></pre>
+
+<p>You should copy and paste these examples into OCaml piece by piece, each piece
+being ended by a  <code>;;</code>.</p>
+<h2 id="Compiling-OCaml-programs">Compiling OCaml programs</h2>
+
+<p>So far we have been using only the OCaml top level. Now we will compile OCaml
+programs into fast stand-alone executables. Consider the following program,
+saved as &quot;helloworld.ml&quot;</p>
+<pre><code class="ocaml">print_endline <span class="string">&quot;Hello, World!&quot;</span></code></pre>
+
+<p>(Notice there is no need to write <code>;;</code> since we are not using the top level).
+We may compile it like this:</p>
+<pre><code class="ocaml">ocamlopt -o helloworld helloworld.ml</code></pre>
+
+<p>Now our current directory has four more files. The files <code>helloworld.cmi</code>,
+<code>helloworld.cmo</code>, and <code>helloworld.o</code> are left over from the compilation
+process. The file <code>helloworld</code> is our executable:</p>
+<pre><code class="ocaml">$ ./helloworld
+Hello, World!
+$</code></pre>
+
+<p>If we have more than one file, we list them all. Here is an example, defined in
+its own file <code>data.ml</code> with a corresponding <code>data.mli</code> interface, and a main
+file <code>main.ml</code> which uses it.</p>
+<pre><code class="ocaml">data.ml:
+
+<span class="governing">let </span><span class="ocaml-variable">to_print</span> = <span class="string">&quot;Hello, World!&quot;</span></code></pre>
+
+<pre><code class="ocaml">data.mli:
+
+<span class="governing"><span class="governing">val</span></span> <span class="ocaml-function">to_print</span> : string</code></pre>
+
+<pre><code class="ocaml">main.ml:
+
+print_endline <span class="ocaml-module">Data</span>.to_print</code></pre>
+
+<p>We can compile it like this:</p>
+<pre class="console"><code class="console">ocamlopt -o main data.mli data.ml main.ml</code></pre>
+
+<p>Most users of OCaml do not call the compiler directly. They use one of the
+<a href="../../learn/tutorials/compiling_ocaml_projects.html">build systems</a> to manage
+compilation for them.</p>
+<h2 id="Where-next">Where next?</h2>
+
+<p>This quick tour should have given you a little taste of OCaml and why you might
+like to explore it further. Elsewhere on <a href="../../index.html">ocaml.org</a> there are
+pointers to <a href="../../learn/books.html">books on OCaml</a> and
+<a href="../../learn/tutorials/index.html">other tutorials</a>.</p>
+
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+    
+    <footer id="footer" class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></h1>
+    <ul>
+      <li><a href="../../learn/taste.html">Code Examples</a></li>
+      <li><a href="../../learn/tutorials/">Tutorials</a></li>
+      <li><a href="../../learn/books.html">Books</a></li>
+      <li><a href="../../learn/success.html">Success Stories</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></h1>
+    <ul>
+      <li><a href="../../docs/install.html">Install</a></li>
+      <li><a href="http://caml.inria.fr/pub/docs/manual-ocaml/">Manual</a></li>
+      <li><a href="https://opam.ocaml.org/packages/">Packages</a></li>
+      <li><a href="../../releases/index.html">Compiler Releases</a></li>
+      <li><a href="../../docs/logos.html">Logos</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../community/" title="To contribute to OCaml">Community</a></h1>
+    <ul>
+      <li><a href="../../community/mailing_lists.html">Mailing Lists</a></li>
+      <li><a href="../../meetings/">Meetings</a></li>
+      <li><a href="../../community/planet/">News</a></li>
+      <li><a href="../../community/support.html">Support</a></li>
+      <li><a href="http://caml.inria.fr/mantis/my_view_page.php" target="_blank" rel="noopener">Bug Tracker</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../">Website</a></h1>
+    <ul>
+      <li><a href="https://github.com/ocaml/ocaml.org/tree/master/site/learn/tutorials/a_first_hour_with_ocaml.md" target="_blank" rel="noopener">Edit this page</a></li>
+      <li><a href="https://github.com/ocaml/ocaml.org/issues" target="_blank" rel="noopener">Website Issues</a></li>
+      <li><a href="../../about.html">About This Site</a></li>
+    <li><a href="https://github.com/ocaml/ocaml.org/" target="_blank" rel="noopener">Find Us on GitHub</a></li>
+      <li><a href="../../contributors.html">Credits</a></li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </footer>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+     
+
+  </body>
+</html>

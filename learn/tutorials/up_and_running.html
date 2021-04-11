@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    
+    <link href="up_and_running.html" rel="alternate" hreflang="en"/>
+
+    
+    <title>Up and Running with OCaml &#8211; OCaml</title>
+    <link href="../../img/favicon32x32.ico?" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+    
+    <link href="../../css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/bootstrap_mod.css" rel="stylesheet" media="screen"/>
+    <link href="../../css/ocamlorg.css" rel="stylesheet" media="screen"/>
+    <script src="../../js/collapsed-menu.js"></script>
+    
+    
+    <script>
+      if (document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+      document.documentElement.className = 'svg';
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button aria-label="menu" type="button" class="btn btn-navbar" onclick="toggleVisibilityMenu('menu-items')">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../../" class="brand"><img src="../../img/colour-logo-white.svg" class="svg" alt="OCaml"/><img src="../../img/colour-logo-white.png" class="png" alt="OCaml"/></a>
+          <div id="menu-items" class="nav-collapse collapse">
+                        <ul class="nav">
+              <li class="active"><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></li>
+              <li><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></li>
+              <li><a href="https://opam.ocaml.org/" title="Documentation for OCaml Packages">Packages</a></li>
+              <li><a href="../../community/" title="To Contribute to OCaml">Community</a></li>
+              <li><a href="../../community/planet/" title="Blogs and News">News</a></li>
+            </ul>
+
+            
+            <a href="https://github.com/ocaml/ocaml.org/tree/master/site/learn/tutorials/up_and_running.md" title="Edit this page" class="edit-this-page pull-right"><span>Edit this page</span></a>
+	    <script>
+	      // Preload the hover image
+	      Image1= new Image(33,33);
+	      Image1.src = '/img/edit-hover.svg';
+	      Image2= new Image(33,33);
+	      Image2.src = '/img/edit-hover.png';
+	    </script>
+            
+            <form id="searchform" class="navbar-search pull-right" method="get" action="//www.google.com/search">
+              <input type="hidden" name="as_sitesearch" value="ocaml.org"/>
+              <label for="search" class="visually-hidden">Search: </label>
+              <input id="search" placeholder="Search" class="search-query" name="q" type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    
+    
+<div class="container">
+  <div class="row">
+    
+    <div class="span4"></div>
+    <div class="span8">
+      
+<div class="running-header">
+  
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="../../">Home</a><span class="divider"></span></li>
+<li><a href="../../learn/">Learn</a><span class="divider"></span></li>
+<li><a href="../../learn/tutorials/">OCaml Tutorials</a><span class="divider"></span></li>
+<li class="active">Up and Running with OCaml</li>
+
+
+    </ol>
+    <ul class="translations">
+      <li class="active">en</li>
+
+    </ul>
+  </div>
+  
+</div>
+
+    </div>
+    <div class="span4">
+      <nav id="nav-secondary">
+        <ul class="nav nav-list">
+          <li class="nav-header"><a href="#">Contents</a></li>
+          <ul><li><a href="#Installing-OCaml">Installing OCaml</a>
+<ul><li><a href="#For-Linux-and-macOS">For Linux and macOS</a>
+</li><li><a href="#For-Windows">For Windows</a>
+</li></ul>
+</li><li><a href="#The-OCaml-top-level">The OCaml top level</a>
+</li><li><a href="#Installing-the-Dune-build-system">Installing the Dune build system</a>
+</li><li><a href="#A-first-project">A first project</a>
+</li><li><a href="#Editor-support-for-OCaml">Editor support for OCaml</a>
+</li></ul>
+
+        </ul>
+      </nav>
+    </div>
+    <div id="content-primary" class="span8">
+            <div id="tryocaml" class="content" style="display:none;">
+        <div class="container">
+          <div class="row">
+            <div id="lesson-message"></div>
+            <div id="languages" style="display:none;"></div>
+            <div id="menu-lessons" style="display:none">
+              <table class="zebra-striped">
+                <tr><td id="text-x"><code></code></td> <td></td></tr>
+              </table>
+            </div>
+            <div class="span9 ocaml">
+              <div id="toplevel-container">
+                <pre id="output"></pre>
+                <div id="sharp">#</div>
+                <div id="toplevel"></div>
+              </div>
+              <div id="buttons"></div>
+              <div id="graphics-title"></div>
+              <div id="graphics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-contents" class="content">
+        
+
+<h1 id="Up-and-Running-with-OCaml">Up and Running with OCaml</h1>
+
+<p>This page will help you install OCaml, the Dune build system, and support for
+your favourite text editor or IDE. These instructions work on Windows, Unix
+systems like Linux, and macOS.</p>
+<h2 id="Installing-OCaml">Installing OCaml</h2>
+
+<p>There are two procedures: one for Unix-like systems, and one for Windows.</p>
+<h3 id="For-Linux-and-macOS">For Linux and macOS</h3>
+
+<p>We will install OCaml using opam, the OCaml package manager.  We will also use
+opam when we wish to install third-party OCaml libraries.</p>
+<p><strong>For macOS</strong></p>
+<pre><code># Homebrew
+brew install opam
+
+# MacPort
+port install opam</code></pre>
+
+<p><strong>For Linux</strong> the preferred way is to use your system&#39;s package manager on
+Linux (e.g <code>apt-get install opam</code> or similar). <a href="https://opam.ocaml.org/doc/Install.html">Details of all installation
+methods.</a></p>
+<p>Then, we install an OCaml compiler:</p>
+<pre><code># environment setup
+opam init
+eval `opam env`
+
+# install given version of the compiler
+opam switch create 4.11.1
+eval `opam env`</code></pre>
+
+<p>Now, OCaml is up and running:</p>
+<pre><code>$ which ocaml
+/Users/frank/.opam/4.11.1/bin/ocaml
+
+$ ocaml -version
+The OCaml toplevel, version 4.11.1</code></pre>
+
+<p><strong>For either Linux or macOS</strong> as an alternative, a binary distribution of opam is
+available:</p>
+<pre><code>sh &lt;(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)</code></pre>
+
+<h3 id="For-Windows">For Windows</h3>
+
+<p>We use the <a href="https://fdopen.github.io/opam-repository-mingw/">OCaml for Windows</a>
+installer which comes in 32bit and 64bit versions. This installer gives you
+opam and OCaml installations all in one go. It is used from within a Cygwin
+environment, but the executables produced have no dependency on Cygwin at all.</p>
+<h2 id="The-OCaml-top-level">The OCaml top level</h2>
+
+<p>OCaml comes with two compilers: for native code, and for byte code. We shall
+use one of those in a moment. But first, let&#39;s use OCaml&#39;s top level (sometimes
+known as a REPL in other languages):</p>
+<pre><code>$ ocaml
+        OCaml version 4.11.1
+
+# 1 + 2 * 3;;
+- : int = 7
+
+</code></pre>
+
+<p>We typed the phrase <code>1 + 2 * 3</code> and then signalled to OCaml that we had
+finished by typing <code>;;</code> followed by the Enter key. OCaml calculated the
+result, <code>7</code> and its type <code>int</code> and showed them to us. We exit by running the
+built-in <code>exit</code> function with exit code 0:</p>
+<pre><code>$ ocaml
+        OCaml version 4.11.1
+
+# 1 + 2 * 3;;
+- : int = 7
+# exit 0;;
+$</code></pre>
+
+<p>There are two ways to improve your experience with the OCaml top level: you can
+install the popular <a href="https://github.com/hanslub42/rlwrap"><code>rlwrap</code></a> on your
+system and invoke <code>rlwrap ocaml</code> instead of <code>ocaml</code> to get line-editing
+facilities inside the OCaml top level, or you can install the alternative top
+level <code>utop</code> using opam:</p>
+<pre><code>$ opam install utop</code></pre>
+
+<p>We run it by typing <code>utop</code> instead of <code>ocaml</code>. You can read more about
+<a href="https://github.com/ocaml-community/utop">utop</a>.</p>
+<h2 id="Installing-the-Dune-build-system">Installing the Dune build system</h2>
+
+<p>Dune is a build system for OCaml. It takes care of all the low level details of
+OCaml compilation. We install it with opam:</p>
+<pre><code>$ opam install dune
+The following actions will be performed:
+  - install dune 2.7.1
+
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[default] https://opam.ocaml.org/2.0.7/archives/dune.2.7.1+opam.tar.gz
+downloaded
+
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed dune.2.7.1
+Done.</code></pre>
+
+<h2 id="A-first-project">A first project</h2>
+
+<p>Let&#39;s begin the simplest project with Dune and OCaml. We create a new directory
+and ask <code>dune</code> to initialise a new project:</p>
+<pre><code>$ mkdir helloworld
+$ cd helloworld/
+$ dune init exe helloworld
+Success: initialized executable component named helloworld</code></pre>
+
+<p>Building our program is as simple as typing <code>dune build</code>:</p>
+<pre><code>$ dune build
+Info: Creating file dune-project with this contents:
+| (lang dune 2.7)
+Done: 8/11 (jobs: 1)</code></pre>
+
+<p>When we change our program, we type <code>dune build</code> again to make a new
+executable. We can run the executable with <code>dune exec</code> (it&#39;s called
+<code>helloworld.exe</code> even when we&#39;re not using Windows):</p>
+<pre><code>$ dune exec ./helloworld.exe
+Hello, World!        </code></pre>
+
+<p>Let&#39;s look at the contents of our new directory. Dune has added the
+<code>helloworld.ml</code> file, which is our OCaml program. It has also added our <code>dune</code>
+file, which tells dune how to build the program, and a <code>_build</code> subdirectory,
+which is dune&#39;s working space.</p>
+<pre><code>$ ls
+_build        dune        helloworld.ml</code></pre>
+
+<p>The <code>helloworld.exe</code> executable is stored inside the <code>_build/default</code> subdirectory, so
+it&#39;s easier to run with <code>dune exec</code>. To ship the executable, we can just copy
+it from inside <code>_build/default</code> to somewhere else.</p>
+<p>Here is the contents of the automatically-generated <code>dune</code> file. When we want
+to add components to your project, such as third-party libraries, we edit this
+file.</p>
+<pre><code>(executable
+ (name helloworld))</code></pre>
+
+<h2 id="Editor-support-for-OCaml">Editor support for OCaml</h2>
+
+<p>For <strong>Visual Studio Code</strong>, and other editors support the Language Server
+Protocol, the OCaml language server can be installed with opam:</p>
+<pre><code>$ opam install ocaml-lsp-server</code></pre>
+
+<p>Now, we install the OCaml Platform Visual Studio Code extension from the Visual
+Studio Marketplace.</p>
+<p>Upon first loading an OCaml source file, you may be prompted to select the
+toolchain in use: pick OCaml the version of OCaml you are using, e.g. 4.11.1
+from the list. Now, help is available by hovering over symbols in your program:</p>
+<p><img src="../../img/vscode.png" alt="Visual Studio Code"/></p>
+<p><strong>On Windows</strong>, we must launch Visual Studio Code from within the Cygwin window,
+rather than by clicking on its icon (otherwise, the language server will not be
+found):</p>
+<pre><code>$ /cygdrive/c/Users/Frank\ Smith/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe</code></pre>
+
+<p><strong>For Vim and Emacs</strong>, install the <a href="https://github.com/ocaml/merlin">Merlin</a>
+system using opam:</p>
+<pre><code>$ opam install merlin</code></pre>
+
+<p>The installation procedure will print instructions on how to link Merlin with
+your editor.</p>
+<p><strong>On Windows</strong>, when using Vim, the default cygwin Vim will not work with
+Merlin. You will need install Vim separately. In addition to the usual
+instructions printed when installing Merlin, you may need to set the PATH in
+Vim:</p>
+<pre><code>let $PATH .= &quot;;&quot;.substitute(system(&#39;opam config var bin&#39;),&#39;\n$&#39;,&#39;&#39;,&#39;&#39;&#39;&#39;)</code></pre>
+
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+    
+    <footer id="footer" class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../learn/" title="Beginner's guide to OCaml">Learn</a></h1>
+    <ul>
+      <li><a href="../../learn/taste.html">Code Examples</a></li>
+      <li><a href="../../learn/tutorials/">Tutorials</a></li>
+      <li><a href="../../learn/books.html">Books</a></li>
+      <li><a href="../../learn/success.html">Success Stories</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../docs/" title="Official Documentation for OCaml">Documentation</a></h1>
+    <ul>
+      <li><a href="../../docs/install.html">Install</a></li>
+      <li><a href="http://caml.inria.fr/pub/docs/manual-ocaml/">Manual</a></li>
+      <li><a href="https://opam.ocaml.org/packages/">Packages</a></li>
+      <li><a href="../../releases/index.html">Compiler Releases</a></li>
+      <li><a href="../../docs/logos.html">Logos</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../community/" title="To contribute to OCaml">Community</a></h1>
+    <ul>
+      <li><a href="../../community/mailing_lists.html">Mailing Lists</a></li>
+      <li><a href="../../meetings/">Meetings</a></li>
+      <li><a href="../../community/planet/">News</a></li>
+      <li><a href="../../community/support.html">Support</a></li>
+      <li><a href="http://caml.inria.fr/mantis/my_view_page.php" target="_blank" rel="noopener">Bug Tracker</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../">Website</a></h1>
+    <ul>
+      <li><a href="https://github.com/ocaml/ocaml.org/tree/master/site/learn/tutorials/up_and_running.md" target="_blank" rel="noopener">Edit this page</a></li>
+      <li><a href="https://github.com/ocaml/ocaml.org/issues" target="_blank" rel="noopener">Website Issues</a></li>
+      <li><a href="../../about.html">About This Site</a></li>
+    <li><a href="https://github.com/ocaml/ocaml.org/" target="_blank" rel="noopener">Find Us on GitHub</a></li>
+      <li><a href="../../contributors.html">Credits</a></li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </footer>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+     
+
+  </body>
+</html>

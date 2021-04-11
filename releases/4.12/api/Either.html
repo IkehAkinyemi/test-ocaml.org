@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html><head>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="index.html" rel="Start"/>
+<link href="Dynlink.html" rel="previous"/>
+<link href="Ephemeron.html" rel="next"/>
+<link href="index.html" rel="Up"/>
+<link href="index_types.html" title="Index of types" rel="Appendix"/>
+<link href="index_extensions.html" title="Index of extensions" rel="Appendix"/>
+<link href="index_exceptions.html" title="Index of exceptions" rel="Appendix"/>
+<link href="index_values.html" title="Index of values" rel="Appendix"/>
+<link href="index_modules.html" title="Index of modules" rel="Appendix"/>
+<link href="index_module_types.html" title="Index of module types" rel="Appendix"/>
+<link href="Arg.html" title="Arg" rel="Chapter"/>
+<link href="Array.html" title="Array" rel="Chapter"/>
+<link href="ArrayLabels.html" title="ArrayLabels" rel="Chapter"/>
+<link href="Atomic.html" title="Atomic" rel="Chapter"/>
+<link href="Bigarray.html" title="Bigarray" rel="Chapter"/>
+<link href="Bool.html" title="Bool" rel="Chapter"/>
+<link href="Buffer.html" title="Buffer" rel="Chapter"/>
+<link href="Bytes.html" title="Bytes" rel="Chapter"/>
+<link href="BytesLabels.html" title="BytesLabels" rel="Chapter"/>
+<link href="Callback.html" title="Callback" rel="Chapter"/>
+<link href="CamlinternalAtomic.html" title="CamlinternalAtomic" rel="Chapter"/>
+<link href="CamlinternalFormat.html" title="CamlinternalFormat" rel="Chapter"/>
+<link href="CamlinternalFormatBasics.html" title="CamlinternalFormatBasics" rel="Chapter"/>
+<link href="CamlinternalLazy.html" title="CamlinternalLazy" rel="Chapter"/>
+<link href="CamlinternalMod.html" title="CamlinternalMod" rel="Chapter"/>
+<link href="CamlinternalOO.html" title="CamlinternalOO" rel="Chapter"/>
+<link href="Char.html" title="Char" rel="Chapter"/>
+<link href="Complex.html" title="Complex" rel="Chapter"/>
+<link href="Condition.html" title="Condition" rel="Chapter"/>
+<link href="Digest.html" title="Digest" rel="Chapter"/>
+<link href="Dynlink.html" title="Dynlink" rel="Chapter"/>
+<link href="Either.html" title="Either" rel="Chapter"/>
+<link href="Ephemeron.html" title="Ephemeron" rel="Chapter"/>
+<link href="Event.html" title="Event" rel="Chapter"/>
+<link href="Filename.html" title="Filename" rel="Chapter"/>
+<link href="Float.html" title="Float" rel="Chapter"/>
+<link href="Format.html" title="Format" rel="Chapter"/>
+<link href="Fun.html" title="Fun" rel="Chapter"/>
+<link href="Gc.html" title="Gc" rel="Chapter"/>
+<link href="Genlex.html" title="Genlex" rel="Chapter"/>
+<link href="Hashtbl.html" title="Hashtbl" rel="Chapter"/>
+<link href="Int.html" title="Int" rel="Chapter"/>
+<link href="Int32.html" title="Int32" rel="Chapter"/>
+<link href="Int64.html" title="Int64" rel="Chapter"/>
+<link href="Lazy.html" title="Lazy" rel="Chapter"/>
+<link href="Lexing.html" title="Lexing" rel="Chapter"/>
+<link href="List.html" title="List" rel="Chapter"/>
+<link href="ListLabels.html" title="ListLabels" rel="Chapter"/>
+<link href="Map.html" title="Map" rel="Chapter"/>
+<link href="Marshal.html" title="Marshal" rel="Chapter"/>
+<link href="MoreLabels.html" title="MoreLabels" rel="Chapter"/>
+<link href="Mutex.html" title="Mutex" rel="Chapter"/>
+<link href="Nativeint.html" title="Nativeint" rel="Chapter"/>
+<link href="Obj.html" title="Obj" rel="Chapter"/>
+<link href="Ocaml_operators.html" title="Ocaml_operators" rel="Chapter"/>
+<link href="Oo.html" title="Oo" rel="Chapter"/>
+<link href="Option.html" title="Option" rel="Chapter"/>
+<link href="Parsing.html" title="Parsing" rel="Chapter"/>
+<link href="Printexc.html" title="Printexc" rel="Chapter"/>
+<link href="Printf.html" title="Printf" rel="Chapter"/>
+<link href="Queue.html" title="Queue" rel="Chapter"/>
+<link href="Random.html" title="Random" rel="Chapter"/>
+<link href="Result.html" title="Result" rel="Chapter"/>
+<link href="Scanf.html" title="Scanf" rel="Chapter"/>
+<link href="Semaphore.html" title="Semaphore" rel="Chapter"/>
+<link href="Seq.html" title="Seq" rel="Chapter"/>
+<link href="Set.html" title="Set" rel="Chapter"/>
+<link href="Stack.html" title="Stack" rel="Chapter"/>
+<link href="StdLabels.html" title="StdLabels" rel="Chapter"/>
+<link href="Stdlib.html" title="Stdlib" rel="Chapter"/>
+<link href="Str.html" title="Str" rel="Chapter"/>
+<link href="Stream.html" title="Stream" rel="Chapter"/>
+<link href="String.html" title="String" rel="Chapter"/>
+<link href="StringLabels.html" title="StringLabels" rel="Chapter"/>
+<link href="Sys.html" title="Sys" rel="Chapter"/>
+<link href="Thread.html" title="Thread" rel="Chapter"/>
+<link href="ThreadUnix.html" title="ThreadUnix" rel="Chapter"/>
+<link href="Uchar.html" title="Uchar" rel="Chapter"/>
+<link href="Unit.html" title="Unit" rel="Chapter"/>
+<link href="Unix.html" title="Unix" rel="Chapter"/>
+<link href="UnixLabels.html" title="UnixLabels" rel="Chapter"/>
+<link href="Weak.html" title="Weak" rel="Chapter"/><title>Either</title>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a href="../manual/index.html" class="brand"><img src="colour-logo.svg" class="svg" alt="OCaml"/></a></nav><nav class="toc"><div class="toc_version"><a href="https://ocaml.org/releases/" id="version-select">API Version 4.12</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="text" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();"/>
+<img src="search_icon.svg" alt="Search" class="api_search svg" onclick="mySearch(false)"/></div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">Either</a></div><ul></ul></nav></header>
+
+<h1>Module <a href="type_Either.html">Either</a></h1>
+
+<pre><span id="MODULEEither"><span class="keyword">module</span> Either</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Either.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Either type.</p>
+
+<p>Either is the simplest and most generic sum/variant type:
+    a value of <code class="code">(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Either</span>.t</code> is either a <code class="code"><span class="constructor">Left</span>&nbsp;(v&nbsp;:&nbsp;<span class="keywordsign">'</span>a)</code>
+    or a <code class="code"><span class="constructor">Right</span>&nbsp;(v&nbsp;:&nbsp;<span class="keywordsign">'</span>b)</code>.</p>
+
+<p>It is a natural choice in the API of generic functions where values
+    could fall in two different cases, possibly at different types,
+    without assigning a specific meaning to what each case should be.</p>
+
+<p>For example:</p>
+
+<pre class="codepre"><code class="code"><span class="constructor">List</span>.partition_map:
+    (<span class="keywordsign">'</span>a <span class="keywordsign">-&gt;</span> (<span class="keywordsign">'</span>b, <span class="keywordsign">'</span>c) <span class="constructor">Either</span>.t) <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a list <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>b list * <span class="keywordsign">'</span>c list</code></pre>
+<p>If you are looking for a parametrized type where
+    one alternative means success and the other means failure,
+    you should use the more specific type <a href="Result.html#TYPEt"><code class="code"><span class="constructor">Result</span>.t</code></a>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> 4.12</li>
+</ul>
+</div>
+<hr width="100%"/>
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type">('a, 'b)</code> t</span> = </code></pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.Left"><span class="constructor">Left</span></span> <span class="keyword">of</span> <code class="type">'a</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.Right"><span class="constructor">Right</span></span> <span class="keyword">of</span> <code class="type">'b</code></code></td>
+
+</tr></tbody></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>A value of <code class="code">(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Either</span>.t</code> contains
+    either a value of <code class="code"><span class="keywordsign">'</span>a</code>  or a value of <code class="code"><span class="keywordsign">'</span>b</code></p>
+</div>
+</div>
+
+
+<pre><span id="VALleft"><span class="keyword">val</span> left</span> : <code class="type">'a -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">left&nbsp;v</code> is <code class="code"><span class="constructor">Left</span>&nbsp;v</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALright"><span class="keyword">val</span> right</span> : <code class="type">'b -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">right&nbsp;v</code> is <code class="code"><span class="constructor">Right</span>&nbsp;v</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALis_left"><span class="keyword">val</span> is_left</span> : <code class="type">('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_left&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code"><span class="keyword">true</span></code>, <code class="code">is_left&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code"><span class="keyword">false</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALis_right"><span class="keyword">val</span> is_right</span> : <code class="type">('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_right&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code"><span class="keyword">false</span></code>, <code class="code">is_right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code"><span class="keyword">true</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfind_left"><span class="keyword">val</span> find_left</span> : <code class="type">('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; 'a option</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">find_left&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code"><span class="constructor">Some</span>&nbsp;v</code>, <code class="code">find_left&nbsp;(<span class="constructor">Right</span>&nbsp;_)</code> is <code class="code"><span class="constructor">None</span></code></p>
+</div>
+</div>
+
+<pre><span id="VALfind_right"><span class="keyword">val</span> find_right</span> : <code class="type">('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; 'b option</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">find_right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code"><span class="constructor">Some</span>&nbsp;v</code>, <code class="code">find_right&nbsp;(<span class="constructor">Left</span>&nbsp;_)</code> is <code class="code"><span class="constructor">None</span></code></p>
+</div>
+</div>
+
+<pre><span id="VALmap_left"><span class="keyword">val</span> map_left</span> : <code class="type">('a1 -&gt; 'a2) -&gt; ('a1, 'b) <a href="Either.html#TYPEt">t</a> -&gt; ('a2, 'b) <a href="Either.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">map_left&nbsp;f&nbsp;e</code> is <code class="code"><span class="constructor">Left</span>&nbsp;(f&nbsp;v)</code> if <code class="code">e</code> is <code class="code"><span class="constructor">Left</span>&nbsp;v</code>
+    and <code class="code">e</code> if <code class="code">e</code> is <code class="code"><span class="constructor">Right</span>&nbsp;_</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALmap_right"><span class="keyword">val</span> map_right</span> : <code class="type">('b1 -&gt; 'b2) -&gt; ('a, 'b1) <a href="Either.html#TYPEt">t</a> -&gt; ('a, 'b2) <a href="Either.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">map_right&nbsp;f&nbsp;e</code> is <code class="code"><span class="constructor">Right</span>&nbsp;(f&nbsp;v)</code> if <code class="code">e</code> is <code class="code"><span class="constructor">Right</span>&nbsp;v</code>
+    and <code class="code">e</code> if <code class="code">e</code> is <code class="code"><span class="constructor">Left</span>&nbsp;_</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALmap"><span class="keyword">val</span> map</span> : <code class="type">left:('a1 -&gt; 'a2) -&gt;<br/>       right:('b1 -&gt; 'b2) -&gt; ('a1, 'b1) <a href="Either.html#TYPEt">t</a> -&gt; ('a2, 'b2) <a href="Either.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">map&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code"><span class="constructor">Left</span>&nbsp;(left&nbsp;v)</code>,
+    <code class="code">map&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code"><span class="constructor">Right</span>&nbsp;(right&nbsp;v)</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfold"><span class="keyword">val</span> fold</span> : <code class="type">left:('a -&gt; 'c) -&gt; right:('b -&gt; 'c) -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; 'c</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">fold&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code">left&nbsp;v</code>, and
+    <code class="code">fold&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code">right&nbsp;v</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">left:('a -&gt; unit) -&gt; right:('b -&gt; unit) -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">iter&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code">left&nbsp;v</code>, and
+    <code class="code">iter&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code">right&nbsp;v</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfor_all"><span class="keyword">val</span> for_all</span> : <code class="type">left:('a -&gt; bool) -&gt; right:('b -&gt; bool) -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">for_all&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Left</span>&nbsp;v)</code> is <code class="code">left&nbsp;v</code>, and
+    <code class="code">for_all&nbsp;~left&nbsp;~right&nbsp;(<span class="constructor">Right</span>&nbsp;v)</code> is <code class="code">right&nbsp;v</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">left:('a -&gt; 'a -&gt; bool) -&gt;<br/>       right:('b -&gt; 'b -&gt; bool) -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">equal&nbsp;~left&nbsp;~right&nbsp;e0&nbsp;e1</code> tests equality of <code class="code">e0</code> and <code class="code">e1</code> using <code class="code">left</code>
+    and <code class="code">right</code> to respectively compare values wrapped by <code class="code"><span class="constructor">Left</span>&nbsp;_</code> and
+    <code class="code"><span class="constructor">Right</span>&nbsp;_</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type">left:('a -&gt; 'a -&gt; int) -&gt;<br/>       right:('b -&gt; 'b -&gt; int) -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; ('a, 'b) <a href="Either.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">compare&nbsp;~left&nbsp;~right&nbsp;e0&nbsp;e1</code> totally orders <code class="code">e0</code> and <code class="code">e1</code> using <code class="code">left</code> and
+    <code class="code">right</code> to respectively compare values wrapped by <code class="code"><span class="constructor">Left</span>&nbsp;_&nbsp;</code> and <code class="code"><span class="constructor">Right</span>&nbsp;_</code>.
+    <code class="code"><span class="constructor">Left</span>&nbsp;_</code> values are smaller than <code class="code"><span class="constructor">Right</span>&nbsp;_</code> values.</p>
+</div>
+</div>
+
+</div></body></html>

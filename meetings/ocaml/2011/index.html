@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    
+    <link href="." rel="alternate" hreflang="en"/>
+
+    
+    <title>2011 &#8211; OCaml</title>
+    <link href="../../../img/favicon32x32.ico?" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+    
+    <link href="../../../css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="../../../css/bootstrap_mod.css" rel="stylesheet" media="screen"/>
+    <link href="../../../css/ocamlorg.css" rel="stylesheet" media="screen"/>
+    <script src="../../../js/collapsed-menu.js"></script>
+    
+    
+    <script>
+      if (document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1')) {
+      document.documentElement.className = 'svg';
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button aria-label="menu" type="button" class="btn btn-navbar" onclick="toggleVisibilityMenu('menu-items')">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../../../" class="brand"><img src="../../../img/colour-logo-white.svg" class="svg" alt="OCaml"/><img src="../../../img/colour-logo-white.png" class="png" alt="OCaml"/></a>
+          <div id="menu-items" class="nav-collapse collapse">
+                        <ul class="nav">
+              <li><a href="../../../learn/" title="Beginner's guide to OCaml">Learn</a></li>
+              <li><a href="../../../docs/" title="Official Documentation for OCaml">Documentation</a></li>
+              <li><a href="https://opam.ocaml.org/" title="Documentation for OCaml Packages">Packages</a></li>
+              <li><a href="../../../community/" title="To Contribute to OCaml">Community</a></li>
+              <li><a href="../../../community/planet/" title="Blogs and News">News</a></li>
+            </ul>
+
+            
+            <a href="https://github.com/ocaml/ocaml.org/tree/master/site/meetings/ocaml/2011/index.md" title="Edit this page" class="edit-this-page pull-right"><span>Edit this page</span></a>
+	    <script>
+	      // Preload the hover image
+	      Image1= new Image(33,33);
+	      Image1.src = '/img/edit-hover.svg';
+	      Image2= new Image(33,33);
+	      Image2.src = '/img/edit-hover.png';
+	    </script>
+            
+            <form id="searchform" class="navbar-search pull-right" method="get" action="//www.google.com/search">
+              <input type="hidden" name="as_sitesearch" value="ocaml.org"/>
+              <label for="search" class="visually-hidden">Search: </label>
+              <input id="search" placeholder="Search" class="search-query" name="q" type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    
+    
+<div class="container">
+  <div class="row">
+    
+    <div class="span4"></div>
+    <div class="span8">
+      
+<div class="running-header">
+  
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><a href="../../../">Home</a><span class="divider"></span></li>
+<li><a href="../../../meetings/">OCaml Meetings</a><span class="divider"></span></li>
+<li><a href="../../../meetings/ocaml/">User &amp; Developers Meetings</a><span class="divider"></span></li>
+<li class="active">2011</li>
+
+
+    </ol>
+    <ul class="translations">
+      <li class="active">en</li>
+
+    </ul>
+  </div>
+  
+</div>
+
+    </div>
+    <div class="span4">
+      <nav id="nav-secondary">
+        <ul class="nav nav-list">
+          <li class="nav-header"><a href="#">Contents</a></li>
+          <ul><li><a href="#Schedule">Schedule</a>
+<ul><li><a href="#Intro-bits-from-OCamlCore-org">Intro (bits from OCamlCore.org)</a>
+</li><li><a href="#The-core-Caml-system-status-report-and-challenges-by-Xavier-Leroy">The core Caml system: status report and challenges, by Xavier Leroy</a>
+</li><li><a href="#OASIS-DB-a-CPAN-for-OCaml-by-Sylvain-Le-Gall">OASIS-DB: a CPAN for OCaml, by Sylvain Le Gall</a>
+</li><li><a href="#js-of-ocaml-Compiling-Ocaml-bytecode-to-Javascript-by-J-r-me-Vouillon">js_of_ocaml: Compiling Ocaml bytecode to Javascript, by Jérôme Vouillon</a>
+</li><li><a href="#Client-server-Web-applications-with-Eliom-by-Vincent-Balat">Client/server Web applications with Eliom, by Vincent Balat</a>
+</li><li><a href="#Using-OCaml-to-generate-198-278-lines-of-C-by-Richard-Jones">Using OCaml to generate 198,278 lines of C, by Richard Jones</a>
+</li><li><a href="#MirageOS-by-Anil-Madhavapeddy">MirageOS, by Anil Madhavapeddy</a>
+</li><li><a href="#Developing-Frama-C-Plug-ins-in-OCaml-by-Julien-Signoles">Developing Frama-C Plug-ins in OCaml, by Julien Signoles</a>
+</li><li><a href="#JoCaml-by-Luc-Maranget">JoCaml, by Luc Maranget</a>
+</li><li><a href="#The-Eternal-Solution-for-Memoisation-Ephemerons-by-Fran-ois-Bobot">The Eternal Solution for Memoisation: Ephemerons, by François Bobot</a>
+</li><li><a href="#OCAPIC-programming-PIC-microcontrollers-with-Objective-Caml-by-Beno-t-Vaugon-and-Philippe-Wang">OCAPIC: programming PIC microcontrollers with Objective Caml, by Benoît Vaugon and Philippe Wang</a>
+</li><li><a href="#Ideas-for-a-Modern-OCaml-Web-Portal-by-Ashish-Agarwal">Ideas for a Modern OCaml Web Portal by Ashish Agarwal</a>
+</li></ul>
+</li><li><a href="#List-of-participants">List of participants</a>
+</li><li><a href="#Hacking-day">Hacking day</a>
+</li><li><a href="#Organization-team">Organization team</a>
+</li></ul>
+
+        </ul>
+      </nav>
+    </div>
+    <div id="content-primary" class="span8">
+            <div id="tryocaml" class="content" style="display:none;">
+        <div class="container">
+          <div class="row">
+            <div id="lesson-message"></div>
+            <div id="languages" style="display:none;"></div>
+            <div id="menu-lessons" style="display:none">
+              <table class="zebra-striped">
+                <tr><td id="text-x"><code></code></td> <td></td></tr>
+              </table>
+            </div>
+            <div class="span9 ocaml">
+              <div id="toplevel-container">
+                <pre id="output"></pre>
+                <div id="sharp">#</div>
+                <div id="toplevel"></div>
+              </div>
+              <div id="buttons"></div>
+              <div id="graphics-title"></div>
+              <div id="graphics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-contents" class="content">
+        
+
+<h1 id="OCaml-Users-Meeting-2011">OCaml Users Meeting 2011</h1>
+
+<p><strong>Date: Friday 15th April 2011</strong>
+Location: Telecom ParisTech, Paris, France</p>
+<p>This event will take place in Paris. The venue is in Telecom ParisTech
+(former ENST, the place of the first OCaml Meeting).</p>
+<p>The OCaml Meeting is the a place where OCaml enthusiasts can meet and
+discuss various subjects ranging from webservers to parser/lexer of
+natural languages in OCaml. Most of the topics focus on practical
+OCaml subjects (libraries or applications) but broadening the field is
+allowed.</p>
+<p>The meeting is kindly sponsored by the
+<a href="../../../consortium/">CAML consortium</a>, so the lunch and
+the coffee breaks are free.</p>
+<h2 id="Schedule">Schedule</h2>
+
+<p><a href="https://www.youtube.com/playlist?list=PLbU5HH3lhSGa0GLMqynyZmrixpO9gU_go">Video Playlist</a></p>
+<ul><li>09:30–09:45: OCamlCore.org news and projects by Sylvain Le Gall</li><li>09:45–10:15: <code>js_of_ocaml</code>: Compiling Ocaml bytecode to Javascript, by Jérôme Vouillon</li><li>10:15–10:45: OCAPIC: programming PIC microcontrollers with Objective Caml</li><li>10:45–11:15: Developing Frama-C Plug-ins in OCaml, by Julien Signoles</li><li>11:30–12:00: Client/server Web applications with Eliom, by Vincent Balat</li><li>12:00–12:30: MirageOS, by Anil Madhavapeddy</li><li>12:30–13:00: Using OCaml to generate 198,278 lines of C, by Richard Jones</li><li>14:30–15:30: OCaml annual report by Xavier Leroy</li><li>15:30–16:00: JoCaml, by Luc Maranget</li><li>16:30–17:00: The Eternal Solution for Memoisation: Ephemerons, by François Bobot</li><li>17:00–17:30: OASIS-DB: a CPAN for OCaml, by Sylvain Le Gall</li><li>17:30–18:00: Ideas for a Modern OCaml Web Portal by Ashish Agarwal</li><li>18:00–19:00: <em>Demonstration and discussion time</em></li></ul>
+
+<h3 id="Intro-bits-from-OCamlCore-org">Intro (bits from OCamlCore.org)</h3>
+
+<p><a href="slides/OCamlCore.org_presentation_2011.pdf">Slides</a>
+| <a href="https://www.youtube.com/watch?v=6eOE1KP-4ao">Video</a></p>
+<h3 id="The-core-Caml-system-status-report-and-challenges-by-Xavier-Leroy">The core Caml system: status report and challenges, by Xavier Leroy</h3>
+
+<p>Xavier Leroy, senior research scientist at INRIA Paris-Rocquencourt,
+leads the development team for the core Caml system.</p>
+<p>This talk will briefly review ongoing work on the core Caml system and
+discuss some medium to long-term challenges, both technical and
+organizational.</p>
+<p><a href="slides/xleroy-cug2011-2.pdf">Slides</a> | <a href="https://youtu.be/lnyaI275erg">Video</a></p>
+<h3 id="OASIS-DB-a-CPAN-for-OCaml-by-Sylvain-Le-Gall">OASIS-DB: a CPAN for OCaml, by Sylvain Le Gall</h3>
+
+<p>OASIS-DB is a set of tools and a webserver that helps to manage OASIS
+enabled softwares and libraries to live together. It uses OASIS data
+to build a database and to understand the link between each
+packages. It also provides a backup site for tarball. The webserver is
+built on top of Ocsigen and Lwt.</p>
+<p>This talk will show the architecture of OASIS and OASIS-DB and
+demonstrate some of its low paperwork publication scheme: upload your
+tarball to the website and let all others download, compile and
+install it using only 2 commands.</p>
+<p>Sylvain Le Gall is an OCaml consultant working at OCamlCore SARL.</p>
+<p><a href="https://github.com/ocaml/oasis">Website</a>
+| <a href="slide/OCamlMeeting2011_OASIS_Slides.pdf">Slides</a>
+| <a href="https://youtu.be/njkP5EZ8uAo">Video</a></p>
+<h3 id="js-of-ocaml-Compiling-Ocaml-bytecode-to-Javascript-by-J-r-me-Vouillon">js_of_ocaml: Compiling Ocaml bytecode to Javascript, by Jérôme Vouillon</h3>
+
+<p><a href="http://ocsigen.org/js_of_ocaml">Js_of_ocaml</a> is a compiler of OCaml
+bytecode to Javascript. It makes it possible to run Ocaml programs in
+a Web browser. Its key features are the following:</p>
+<ul><li>The whole language, and most of the standard library are supported.</li><li>The generated code runs very fast</li><li>The compiler is easy to install: it only depends on Findlib and Lwt.</li><li>The generated code is independent of Eliom and the Ocsigen server. You can use it with any Web server.</li><li>You can use a standard installation of OCaml to compile your programs. In particular, you do not have to recompile a library to use it with Js_of_ocaml. You just have to link your program with a specific library to interface with the browser APIs.</li><li>Binding Javascript libraries is very easy</li></ul>
+
+<p>In this talk we will show you the main features and some examples.</p>
+<p>Jérôme Vouillon is a computer science researcher at
+<a href="http://www.pps.jussieu.fr/">PPS</a> and <a href="http://www.irill.org/">IRILL</a>
+(CNRS), member of the <a href="http://ocsigen.org/">Ocsigen</a> team.</p>
+<p><a href="https://youtu.be/rJNCUFZokNI">Video</a></p>
+<h3 id="Client-server-Web-applications-with-Eliom-by-Vincent-Balat">Client/server Web applications with Eliom, by Vincent Balat</h3>
+
+<p>Ocsigen Eliom is an extension for the Web server of the Ocsigen
+project allowing to write Web applications in Ocaml. Eliom 1 made very
+easy to write reliable Web sites where pages are computed on server
+side. Thanks to the js_of_ocaml compiler, it is now possible to run
+OCaml programs in a browser. Eliom 2.0, that will be released in very
+few weeks, will make possible to mix both, and write client/server Web
+applications fully in OCaml, in very few lines of code. A
+client/server program is written as a single OCaml application. Eliom
+handles the communication between the client and the server
+automatically in both directions, and your application is fully
+integrated in your Web site, that is: you keep the usual Web
+interaction (with links, forms, and URLs) during the execution of the
+client side program!</p>
+<p>In this talk I will show how to write an example application.</p>
+<p>Vincent Balat is a computer science researcher at
+<a href="http://www.pps.jussieu.fr/">PPS</a> and <a href="http://www.irill.org/">IRILL</a>
+(Université Paris Diderot/INRIA), member of the
+<a href="http://ocsigen.org/">Ocsigen</a> team.</p>
+<p><a href="https://youtu.be/yLh45IyAuZI">Video</a></p>
+<h3 id="Using-OCaml-to-generate-198-278-lines-of-C-by-Richard-Jones">Using OCaml to generate 198,278 lines of C, by Richard Jones</h3>
+
+<p>We use OCaml in the <a href="http://libguestfs.org/">libguestfs project</a> to
+generate large amounts of boilerplate C code. This short talk (10
+mins) will explain what the problem that existing projects such as
+<a href="http://libvirt.org/">libvirt</a> suffered from and how we successfully
+solved it, and what difficulties remain.</p>
+<p><a href="https://youtu.be/FbgRsFpfHJI">Video</a></p>
+<h3 id="MirageOS-by-Anil-Madhavapeddy">MirageOS, by Anil Madhavapeddy</h3>
+
+<p>Mirage is an open-source operating system for constructing secure,
+high-performance, reliable network applications across a variety of
+cloud computing platforms. OCaml code can be developed on a normal OS
+such as Linux and then compiled into a fully-standalone, specialised
+OS kernel that runs under the Xen hypervisor (and in the future, KVM
+or VMWare). Mirage is based around the OCaml language, with syntax
+extensions and libraries that are easy to use during development, and
+map directly into operating system constructs when being compiled for
+production deployment.</p>
+<p><a href="slides/mirage-ocaml-users-2011.ppt">Slides</a>
+| <a href="https://youtu.be/GEkxyA2FwW0">Video</a></p>
+<h3 id="Developing-Frama-C-Plug-ins-in-OCaml-by-Julien-Signoles">Developing Frama-C Plug-ins in OCaml, by Julien Signoles</h3>
+
+<p><a href="http://frama-c.com/">Frama-C</a> is an extensible and collaborative
+platform dedicated to source-code analysis of C software. It is fully
+developed in OCaml. Any OCaml developer can extend the platform with a
+new plug-in in order to add new analyzers or functionalities. This
+talk will give a survey of Frama-C and show how to implement a new
+plug-in in OCaml.</p>
+<p><a href="slides/framac2011.pdf">Slides</a>
+| <a href="https://youtu.be/TgaWYzHW33s">Video</a></p>
+<h3 id="JoCaml-by-Luc-Maranget">JoCaml, by Luc Maranget</h3>
+
+<p><a href="http://jocaml.inria.fr/">JoCaml</a> is an extension of Objective Caml
+for concurrent and distributed programming. The last released version
+of JoCaml features an extended library intended to facilitate the
+programming of master/slave distributed applications aware of failures
+and machine heterogeneity, and the control of forked programs. I&#39;ll
+illustrate this new functionalities by the means of simple examples,
+where JoCaml acts as a coordination language.</p>
+<p><a href="slides/jocaml2011.pdf">Slides</a>
+| <a href="https://youtu.be/dQl0BUE1WGw">Video</a></p>
+<h3 id="The-Eternal-Solution-for-Memoisation-Ephemerons-by-Fran-ois-Bobot">The Eternal Solution for Memoisation: Ephemerons, by François Bobot</h3>
+
+<p>Memoization is a powerful tool for writing neat programs but yet
+efficient ones. It stores previous function results for latter use. To
+avoid memory leaks, a perfect memoization technique would let a
+function result be reclaimed as soon as the function argument is
+reclaimed. It can be proved that a perfect solution cannot be
+implemented with the current Ocaml runtime. We propose a modification
+to the Ocaml runtime which provides Hayes&#39;s ephemerons. It is then
+possible to implement perfect memoization tables.</p>
+<p><a href="slides/memoization2011.pdf">Slides</a>
+| <a href="https://youtu.be/i8U3Y7C6eIs">Video</a></p>
+<h3 id="OCAPIC-programming-PIC-microcontrollers-with-Objective-Caml-by-Beno-t-Vaugon-and-Philippe-Wang">OCAPIC: programming PIC microcontrollers with Objective Caml, by Benoît Vaugon and Philippe Wang</h3>
+
+<p>OCAPIC provides means to program PIC microcontrollers with Objective
+Caml (with no language restrictions, only library changes). Very tight
+PIC µC resources (only 4KB of volatile memory, at most) made this task
+a great challenge that has been successfully addressed.</p>
+<p>OCAPIC includes OCamlClean, a tool to reduce bytecode binaries by
+eliminating dead code (works with any binary produced by compiler
+ocamlc).</p>
+<p><a href="http://www.algo-prog.info/ocaml_for_pic/">OCAPIC&#39;s website</a>
+| <a href="slides/ocapic-ocamlmeeting-2011.pdf">Slides</a>
+| <a href="https://youtu.be/ZLTWLrTCd4s">Video</a></p>
+<h3 id="Ideas-for-a-Modern-OCaml-Web-Portal-by-Ashish-Agarwal">Ideas for a Modern OCaml Web Portal by Ashish Agarwal</h3>
+
+<p>OCaml lacks the web presence it deserves. The purpose of this talk is
+to foster discussion of what we as a community want from a modern web
+portal for OCaml, and how we can begin implementing it. The discussion
+will be guided by a presentation covering: desired content and design,
+technological implementation choices, and management of such an
+effort.</p>
+<p>Ashish Agarwal is a Research Scientist at New York University, where
+he uses OCaml to build bioinformatics software.</p>
+<p><a href="slides/ocaml-website-2011.pdf">Slides</a>
+| <a href="https://youtu.be/W7_wIjvg_is">Video</a></p>
+<h2 id="List-of-participants">List of participants</h2>
+
+<ol><li>Adrien Guatto,    UPMC &amp; LIENS</li><li>Alain Frisch,     LexiFi</li><li>Alessandro Strada</li><li>Anil Madhavapeddy,     University of Cambridge</li><li>Anton Kolotaev,     INRIA</li><li>Ashish Agarwal,     New York University</li><li>Benjamin Canou,     UPMC</li><li>Benoît Vaugon,     Université Pierre et Marie Curie</li><li>Boris Yakobowski,     CEA LIST</li><li>Christophe Troestler,     Université de Mons</li><li>Cécile Stentzel,     INRIA</li><li>Cédric Pasteur,     LIENS</li><li>Damien Doligez,     INRIA</li><li>Dana Xu,     INRIA</li><li>Daniel Bünzli</li><li>Dario Teixeir</li><li>David Teller,     MLstate</li><li>Dmitry Bely</li><li>Esther Baruk,     Université Paris 7 / LexiFi</li><li>Fabrice Le Fessant,     INRIA -- OCamlPro</li><li>François Bobot,     Paris XI -- INRIA</li><li>Gabriel de Perthuis</li><li>Gabriel Kerneis,     Laboratoire PPS, Paris</li><li>Grégoire Henry,     IRILL</li><li>Jaap Boender,     IRILL</li><li>Jacques Le Normand,     LexiFi</li><li>Jean-Vincent Loddo,     LIPN, Université Paris 13</li><li>Jonathan Derque</li><li>Jonathan Protzenko</li><li>Julien Signoles,     CEA LIST</li><li>Jérémie Dimino</li><li>Kaustuv Chaudhuri,     INRIA</li><li>Kim Nguyen,     LRI, Université Paris-Sud 11</li><li>Laurent Carrié,     Thales</li><li>Leonard Gerard,     Université Paris-Sud 11 / LIENS</li><li>Louis Mandel,     Université Paris-Sud 11</li><li>Luc Maranget,     INRIA</li><li>Luca Saiu,     LIPN, Université Paris 13</li><li>Markus Weißmann,     TUM</li><li>Mathias Kende,     PPS</li><li>Mehdi Dogguy</li><li>Meriem Zidouni,     Inria rocquencourt</li><li>Mikolaj Konarski,     funktory.com</li><li>Nicolas Pouillard,     INRIA</li><li>Olivier Andrieu,     Esterel Technologies</li><li>Paolo Donadeo,     Studio Associato 4Sigma</li><li>Paolo Herms,     CEA LIST — INRIA</li><li>Philippe Cantin</li><li>Philippe Veber,     INRA</li><li>Philippe Wang,     Université Pierre et Marie Curie / LIP6</li><li>Pierre Chambart,     Irill</li><li>Raphael Proust,     ENS Cachan (student)</li><li>Richard Jones,     Red Hat</li><li>Roberto Di Cosmo,     IRILL</li><li>Samuel Mimram,     CEA, LIST</li><li>Stéphane Glondu</li><li>Sylvain Le Gall,     OCamlCore SARL</li><li>Thomas Gazagnaire,     INRIA / OcamlPro</li><li>Tiphaine Turpin</li><li>Victor Nicollet,     RunOrg</li><li>Vincent Balat,     IRILL Université Paris Diderot</li><li>Vivien Ravet,     LIP6</li><li>Xavier Leroy,     INRIA Paris-Rocquencourt</li><li>Yann Regis-Gianas,     PPS - Paris 7 - INRIA pi.r2</li></ol>
+
+<h2 id="Hacking-day">Hacking day</h2>
+
+<p>Like last year, a Hacking day ( or week-end if you are motivated
+enough ) will be organised. It will hosted by IRILL,
+<a href="http://www.irill.org/about/access">http://www.irill.org/about/access</a>.
+Access to the building is restricted, more information will be given
+at the meeting.</p>
+<p>For more information, contact Pierre Chambart (chambart <code>AT</code>
+crans.org) which is kindly organizing this hacking day.</p>
+<h2 id="Organization-team">Organization team</h2>
+
+<p>Team list:</p>
+<ul><li>Sylvain Le Gall</li><li>Dario Teixeira who has contributed a large part of the registration website</li><li>Pierre Chambart (chambart <code>AT</code> crans.org) for the hacking day</li><li>Paolo Herms who will handle the welcome stand </li></ul>
+
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+    
+    <footer id="footer" class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../learn/" title="Beginner's guide to OCaml">Learn</a></h1>
+    <ul>
+      <li><a href="../../../learn/taste.html">Code Examples</a></li>
+      <li><a href="../../../learn/tutorials/">Tutorials</a></li>
+      <li><a href="../../../learn/books.html">Books</a></li>
+      <li><a href="../../../learn/success.html">Success Stories</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../docs/" title="Official Documentation for OCaml">Documentation</a></h1>
+    <ul>
+      <li><a href="../../../docs/install.html">Install</a></li>
+      <li><a href="http://caml.inria.fr/pub/docs/manual-ocaml/">Manual</a></li>
+      <li><a href="https://opam.ocaml.org/packages/">Packages</a></li>
+      <li><a href="../../../releases/index.html">Compiler Releases</a></li>
+      <li><a href="../../../docs/logos.html">Logos</a></li>
+    </ul>
+  </div>
+</div>
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../community/" title="To contribute to OCaml">Community</a></h1>
+    <ul>
+      <li><a href="../../../community/mailing_lists.html">Mailing Lists</a></li>
+      <li><a href="../../../meetings/">Meetings</a></li>
+      <li><a href="../../../community/planet/">News</a></li>
+      <li><a href="../../../community/support.html">Support</a></li>
+      <li><a href="http://caml.inria.fr/mantis/my_view_page.php" target="_blank" rel="noopener">Bug Tracker</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="column">
+  <div class="entry">
+    <h1><a href="../../../">Website</a></h1>
+    <ul>
+      <li><a href="https://github.com/ocaml/ocaml.org/tree/master/site/meetings/ocaml/2011/index.md" target="_blank" rel="noopener">Edit this page</a></li>
+      <li><a href="https://github.com/ocaml/ocaml.org/issues" target="_blank" rel="noopener">Website Issues</a></li>
+      <li><a href="../../../about.html">About This Site</a></li>
+    <li><a href="https://github.com/ocaml/ocaml.org/" target="_blank" rel="noopener">Find Us on GitHub</a></li>
+      <li><a href="../../../contributors.html">Credits</a></li>
+    </ul>
+  </div>
+</div>
+
+      </div>
+    </footer>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+     
+
+  </body>
+</html>

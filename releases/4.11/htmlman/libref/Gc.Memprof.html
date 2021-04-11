@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="index.html" rel="Start"/>
+<link href="Gc.html" rel="Up"/>
+<link href="index_types.html" title="Index of types" rel="Appendix"/>
+<link href="index_extensions.html" title="Index of extensions" rel="Appendix"/>
+<link href="index_exceptions.html" title="Index of exceptions" rel="Appendix"/>
+<link href="index_values.html" title="Index of values" rel="Appendix"/>
+<link href="index_modules.html" title="Index of modules" rel="Appendix"/>
+<link href="index_module_types.html" title="Index of module types" rel="Appendix"/>
+<link href="Arg.html" title="Arg" rel="Chapter"/>
+<link href="Array.html" title="Array" rel="Chapter"/>
+<link href="ArrayLabels.html" title="ArrayLabels" rel="Chapter"/>
+<link href="Bigarray.html" title="Bigarray" rel="Chapter"/>
+<link href="Bool.html" title="Bool" rel="Chapter"/>
+<link href="Buffer.html" title="Buffer" rel="Chapter"/>
+<link href="Bytes.html" title="Bytes" rel="Chapter"/>
+<link href="BytesLabels.html" title="BytesLabels" rel="Chapter"/>
+<link href="Callback.html" title="Callback" rel="Chapter"/>
+<link href="CamlinternalFormat.html" title="CamlinternalFormat" rel="Chapter"/>
+<link href="CamlinternalFormatBasics.html" title="CamlinternalFormatBasics" rel="Chapter"/>
+<link href="CamlinternalLazy.html" title="CamlinternalLazy" rel="Chapter"/>
+<link href="CamlinternalMod.html" title="CamlinternalMod" rel="Chapter"/>
+<link href="CamlinternalOO.html" title="CamlinternalOO" rel="Chapter"/>
+<link href="Char.html" title="Char" rel="Chapter"/>
+<link href="Complex.html" title="Complex" rel="Chapter"/>
+<link href="Condition.html" title="Condition" rel="Chapter"/>
+<link href="Digest.html" title="Digest" rel="Chapter"/>
+<link href="Dynlink.html" title="Dynlink" rel="Chapter"/>
+<link href="Ephemeron.html" title="Ephemeron" rel="Chapter"/>
+<link href="Event.html" title="Event" rel="Chapter"/>
+<link href="Filename.html" title="Filename" rel="Chapter"/>
+<link href="Float.html" title="Float" rel="Chapter"/>
+<link href="Format.html" title="Format" rel="Chapter"/>
+<link href="Fun.html" title="Fun" rel="Chapter"/>
+<link href="Gc.html" title="Gc" rel="Chapter"/>
+<link href="Genlex.html" title="Genlex" rel="Chapter"/>
+<link href="Hashtbl.html" title="Hashtbl" rel="Chapter"/>
+<link href="Int.html" title="Int" rel="Chapter"/>
+<link href="Int32.html" title="Int32" rel="Chapter"/>
+<link href="Int64.html" title="Int64" rel="Chapter"/>
+<link href="Lazy.html" title="Lazy" rel="Chapter"/>
+<link href="Lexing.html" title="Lexing" rel="Chapter"/>
+<link href="List.html" title="List" rel="Chapter"/>
+<link href="ListLabels.html" title="ListLabels" rel="Chapter"/>
+<link href="Map.html" title="Map" rel="Chapter"/>
+<link href="Marshal.html" title="Marshal" rel="Chapter"/>
+<link href="MoreLabels.html" title="MoreLabels" rel="Chapter"/>
+<link href="Mutex.html" title="Mutex" rel="Chapter"/>
+<link href="Nativeint.html" title="Nativeint" rel="Chapter"/>
+<link href="Obj.html" title="Obj" rel="Chapter"/>
+<link href="Ocaml_operators.html" title="Ocaml_operators" rel="Chapter"/>
+<link href="Oo.html" title="Oo" rel="Chapter"/>
+<link href="Option.html" title="Option" rel="Chapter"/>
+<link href="Parsing.html" title="Parsing" rel="Chapter"/>
+<link href="Printexc.html" title="Printexc" rel="Chapter"/>
+<link href="Printf.html" title="Printf" rel="Chapter"/>
+<link href="Queue.html" title="Queue" rel="Chapter"/>
+<link href="Random.html" title="Random" rel="Chapter"/>
+<link href="Result.html" title="Result" rel="Chapter"/>
+<link href="Scanf.html" title="Scanf" rel="Chapter"/>
+<link href="Seq.html" title="Seq" rel="Chapter"/>
+<link href="Set.html" title="Set" rel="Chapter"/>
+<link href="Spacetime.html" title="Spacetime" rel="Chapter"/>
+<link href="Stack.html" title="Stack" rel="Chapter"/>
+<link href="StdLabels.html" title="StdLabels" rel="Chapter"/>
+<link href="Stdlib.html" title="Stdlib" rel="Chapter"/>
+<link href="Str.html" title="Str" rel="Chapter"/>
+<link href="Stream.html" title="Stream" rel="Chapter"/>
+<link href="String.html" title="String" rel="Chapter"/>
+<link href="StringLabels.html" title="StringLabels" rel="Chapter"/>
+<link href="Sys.html" title="Sys" rel="Chapter"/>
+<link href="Thread.html" title="Thread" rel="Chapter"/>
+<link href="ThreadUnix.html" title="ThreadUnix" rel="Chapter"/>
+<link href="Uchar.html" title="Uchar" rel="Chapter"/>
+<link href="Unit.html" title="Unit" rel="Chapter"/>
+<link href="Unix.html" title="Unix" rel="Chapter"/>
+<link href="UnixLabels.html" title="UnixLabels" rel="Chapter"/>
+<link href="Weak.html" title="Weak" rel="Chapter"/><title>Gc.Memprof</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a href="Gc.html" class="up" title="Gc">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Gc.Memprof.html">Gc.Memprof</a></h1>
+
+<pre><span id="MODULEMemprof"><span class="keyword">module</span> Memprof</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Gc.Memprof.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p><code class="code"><span class="constructor">Memprof</span></code> is a sampling engine for allocated memory words. Every
+   allocated word has a probability of being sampled equal to a
+   configurable sampling rate. Once a block is sampled, it becomes
+   tracked. A tracked block triggers a user-defined callback as soon
+   as it is allocated, promoted or deallocated.</p>
+
+<p>Since blocks are composed of several words, a block can potentially
+   be sampled several times. If a block is sampled several times, then
+   each of the callback is called once for each event of this block:
+   the multiplicity is given in the <code class="code">n_samples</code> field of the
+   <code class="code">allocation</code> structure.</p>
+
+<p>This engine makes it possible to implement a low-overhead memory
+   profiler as an OCaml library.</p>
+
+<p>Note: this API is EXPERIMENTAL. It may change without prior
+   notice.</p>
+</div>
+</div>
+<hr width="100%"/>
+
+<pre><code><span id="TYPEallocation"><span class="keyword">type</span> <code class="type"></code>allocation</span> = private {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTallocation.n_samples">n_samples</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>The number of samples in this block (&gt;= 1).</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTallocation.size">size</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>The size of the block, in words, excluding the header.</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTallocation.unmarshalled">unmarshalled</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>Whether the block comes from unmarshalling.</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTallocation.callstack">callstack</span>&nbsp;: <code class="type"><a href="Printexc.html#TYPEraw_backtrace">Printexc.raw_backtrace</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>The callstack for the allocation.</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>The type of metadata associated with allocations. This is the
+       type of records passed to the callback triggered by the
+       sampling of an allocation.</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEtracker"><span class="keyword">type</span> <code class="type">('minor, 'major)</code> tracker</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTtracker.alloc_minor">alloc_minor</span>&nbsp;: <code class="type"><a href="Gc.Memprof.html#TYPEallocation">allocation</a> -> 'minor option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTtracker.alloc_major">alloc_major</span>&nbsp;: <code class="type"><a href="Gc.Memprof.html#TYPEallocation">allocation</a> -> 'major option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTtracker.promote">promote</span>&nbsp;: <code class="type">'minor -> 'major option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTtracker.dealloc_minor">dealloc_minor</span>&nbsp;: <code class="type">'minor -> unit</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTtracker.dealloc_major">dealloc_major</span>&nbsp;: <code class="type">'major -> unit</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>A <code class="code">(<span class="keywordsign">'</span>minor,&nbsp;<span class="keywordsign">'</span>major)&nbsp;tracker</code> describes how memprof should track
+       sampled blocks over their lifetime, keeping a user-defined piece
+       of metadata for each of them: <code class="code"><span class="keywordsign">'</span>minor</code> is the type of metadata
+       to keep for minor blocks, and <code class="code"><span class="keywordsign">'</span>major</code> the type of metadata
+       for major blocks.</p>
+
+<p>If an allocation-tracking or promotion-tracking function returns <code class="code"><span class="constructor">None</span></code>,
+       memprof stops tracking the corresponding value.</p>
+</div>
+</div>
+
+
+<pre><span id="VALnull_tracker"><span class="keyword">val</span> null_tracker</span> : <code class="type">('minor, 'major) <a href="Gc.Memprof.html#TYPEtracker">tracker</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Default callbacks simply return <code class="code"><span class="constructor">None</span></code> or <code class="code">()</code></p>
+</div>
+</div>
+
+<pre><span id="VALstart"><span class="keyword">val</span> start</span> : <code class="type">sampling_rate:float -><br/>       ?callstack_size:int -> ('minor, 'major) <a href="Gc.Memprof.html#TYPEtracker">tracker</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Start the sampling with the given parameters. Fails if
+       sampling is already active.</p>
+
+<p>The parameter <code class="code">sampling_rate</code> is the sampling rate in samples
+       per word (including headers). Usually, with cheap callbacks, a
+       rate of 1e-4 has no visible effect on performance, and 1e-3
+       causes the program to run a few percent slower</p>
+
+<p>The parameter <code class="code">callstack_size</code> is the length of the callstack
+       recorded at every sample. Its default is <code class="code">max_int</code>.</p>
+
+<p>The parameter <code class="code">tracker</code> determines how to track sampled blocks
+       over their lifetime in the minor and major heap.</p>
+
+<p>Sampling is temporarily disabled when calling a callback
+       for the current thread. So they do not need to be reentrant if
+       the program is single-threaded. However, if threads are used,
+       it is possible that a context switch occurs during a callback,
+       in this case the callback functions must be reentrant.</p>
+
+<p>Note that the callback can be postponed slightly after the
+       actual event. The callstack passed to the callback is always
+       accurate, but the program state may have evolved.</p>
+
+<p>Calling <code class="code"><span class="constructor">Thread</span>.exit</code> in a callback is currently unsafe and can
+       result in undefined behavior.</p>
+</div>
+</div>
+
+<pre><span id="VALstop"><span class="keyword">val</span> stop</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Stop the sampling. Fails if sampling is not active.</p>
+
+<p>This function does not allocate memory, but tries to run the
+        postponed callbacks for already allocated memory blocks (of
+        course, these callbacks may allocate).</p>
+
+<p>All the already tracked blocks are discarded.</p>
+
+<p>Calling <code class="code">stop</code> when a callback is running can lead to
+        callbacks not being called even though some events happened.</p>
+</div>
+</div>
+</body></html>
